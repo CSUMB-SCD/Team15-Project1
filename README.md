@@ -1,4 +1,4 @@
 # Team15-Project1
 
-[x] - Implement database and connection
-[ ] - 
+- [ ] Implement database and connection
+- [ ] 
