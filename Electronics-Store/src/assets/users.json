@@ -1,0 +1,17 @@
+[
+  {
+    "username": "Manjit",
+    "password": "password",
+    "credit": 10000
+  },
+  {
+    "username": "Irais",
+    "password": "password",
+    "credit": 30000
+  },
+  {
+    "username": "Raeleen",
+    "password": "password",
+    "credit": 20000
+  }
+ ]
