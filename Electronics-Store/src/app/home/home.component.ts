@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   private infos = [];
 
   name:string = '';
-  productInfoUrl:string = 'http://localhost:8081/allProductInfo';
+  productInfoUrl:string = 'https://spring-boot-testing-438.herokuapp.com/allProductInfo';
   price: number;
   productDesc:string = '';
   found:boolean;
@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
       }
     )
   }
+
+  //heroku and add mLab plugin
+  //basic empty app, connect app to mLab (need URI)
+  
 
   ngOnInit() {
   }

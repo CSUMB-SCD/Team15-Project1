@@ -17,16 +17,11 @@ export class ProductsPageComponent implements OnInit {
   price:number;
   productDesc:string = ''; 
   found:boolean;
-  productInfoUrl:string = 'http://localhost:8081/allProductInfo';
-  productUrl:string = 'http://localhost:8081/allProducts';
+  productInfoUrl:string = 'https://spring-boot-testing-438.herokuapp.com/allProductInfo';
 
   constructor(private httpClient:HttpClient) { }
 
-  getProductURL(name: string) : string {
-    return this.productUrl + '/?productName=' + name;
-  }
-
-
+  
   postProductInfo() {
     this.httpClient.get(this.productInfoUrl)
     .subscribe(
@@ -40,23 +35,8 @@ export class ProductsPageComponent implements OnInit {
     )
   } 
 
-  // postProductQuantity(){
-  //   this.httpClient.get(this.productUrl)
-  //   .subscribe(
-  //     (data: any[]) => {
-
-  //       if(data.length){
-  //         console.log(data)
-  //         //this.infoForProducts = data;
-  //         this.test();
-  //       }
-  //     }
-  //   )
-  // }
-
   ngOnInit() {
     this.postProductInfo();
-    //this.postProductQuantity();
   }
 
 }
