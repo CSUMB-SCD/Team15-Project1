@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ElectronicdbApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "edu.csumb.cst438.group15.electronicdb.ElectronicdbApplication",
+            "args": "",
+            "projectName": "electronicdb"
+        }
+    ]
+}

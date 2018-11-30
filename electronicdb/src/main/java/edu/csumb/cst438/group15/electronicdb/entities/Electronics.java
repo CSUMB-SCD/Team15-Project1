@@ -7,24 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Electronics {
     @Id
     private String id;
-    private Products products;
     private ProductInfo productInfo;
     // private Users users;
     // private Checkout checkout;
 
-    public Electronics(Products products, ProductInfo productInfo) {
-        this.products = products;
+    public Electronics(ProductInfo productInfo) {
         this.productInfo = productInfo;
         // this.users = users;
         // this.checkout = checkout;
-    }
-
-    public void setProducts(Products products){
-        this.products = products;
-    }
-
-    public Products getProducts(){
-        return this.products;
     }
 
     public void setProductInfo(ProductInfo productInfo){

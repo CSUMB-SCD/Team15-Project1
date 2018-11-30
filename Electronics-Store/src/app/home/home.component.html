@@ -1,3 +1,4 @@
+
 <p>
     <a routerLink="sign-in">
         <button class="button_right">
@@ -16,7 +17,16 @@
 </p>
 
 <br><br>
-  <h1>
-    Description of Product:
+<div>
+  <p> Search for a product:
+  <input type="text" (keyup)="onNameKeyUp($event)">
+  <button (click)="getProductDescription()">Search</button>
+</p>
+</div>
+<p>Product Information</p>
 
-  </h1>
+<div *ngIf="found">
+  
+    {{name}} is {{price}}
+  <span>{{productDesc}}</span>
+</div>

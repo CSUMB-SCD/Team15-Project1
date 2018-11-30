@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -10,6 +11,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { DataService } from './data.service';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

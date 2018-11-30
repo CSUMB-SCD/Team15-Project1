@@ -3,27 +3,22 @@ package edu.csumb.cst438.group15.electronicdb;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import edu.csumb.cst438.group15.electronicdb.entities.Electronics;
-import edu.csumb.cst438.group15.electronicdb.entities.Products;
+import edu.csumb.cst438.group15.electronicdb.entities.ProductInfo;
 
 
-@RestContoller
+@RestController
 public class ElectronicsController {
     @Autowired
-    IElectronicsRepository electronicsRepository;
-    IElectronicsRepository productsRepository;
+    IProductInfoRepository productInfoRepository;
 
-    @GetMapping("/allElectronics")
-    public List<Electronics> getAll () {
-        List<Electronics> result = electronicsRepository.findAll();
+
+    @RequestMapping("/allProductInfo")
+    public List<ProductInfo> getAllProductInfo () {
+        List<ProductInfo> result = productInfoRepository.findAll();
         return result;
     }
 
-    @GetMapping("/allProducts")
-    public List<Products> getAll () {
-        List<Products> result = productsRepository.findAll();
-        return result;
-    }
-    
 }
