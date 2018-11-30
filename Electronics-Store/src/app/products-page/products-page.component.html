@@ -1,19 +1,37 @@
 <h1 class= heading> Electronics Available</h1>
+<!-- <div>
+  <button (click)="postProductInfo()">Post products</button>
+  <button (click)="postProductQuantity()">Post products</button>
+  </div> -->
+
+  <!-- {{info.quantity}}
+  *ngFor="let info of infoForProducts" -->
 <body>
   <table class="table1">
     <tr>
       <th>Product Name</th>
       <th>Price</th>
-      <th>Amt. in Stock</th>
+      <th>Quantity</th>
       <th>Add to Cart</th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+
+    
+    <tr *ngFor="let product of products" >
+      <td> <a routerLink="/product-details/">{{product.productName}}</a> </td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+
+      <!-- <td *ngFor="let info of infoForProducts">
+        {{info.quantity}} bye
+      </td> -->
+
+  
+      
       <td class="row">
         <button class=addBtn type="submit">Add</button>
       </td>
+
     </tr>
+
   </table>
 </body>

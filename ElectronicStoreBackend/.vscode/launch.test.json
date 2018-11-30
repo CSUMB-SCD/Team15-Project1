@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "ElectronicStoreBackend",
+                "projectName": "ElectronicStoreBackend",
+                "workingDirectory": "/Users/raeleenwatson/Documents/CST438FinalProject/Team15-Project1/ElectronicStoreBackend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "ElectronicStoreBackend",
+                "projectName": "ElectronicStoreBackend",
+                "workingDirectory": "/Users/raeleenwatson/Documents/CST438FinalProject/Team15-Project1/ElectronicStoreBackend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
