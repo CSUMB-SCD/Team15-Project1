@@ -7,7 +7,7 @@
   <!-- {{info.quantity}}
   *ngFor="let info of infoForProducts" -->
 <body>
-  <table class="table1">
+  <table cellspacing="2" class="table1">
     <tr>
       <th>Product Name</th>
       <th>Price</th>
@@ -15,23 +15,29 @@
       <th>Add to Cart</th>
     </tr>
 
-    
     <tr *ngFor="let product of products" >
-      <td> <a routerLink="/product-details/">{{product.productName}}</a> </td>
-      <td>{{product.price}}</td>
-      <td>{{product.quantity}}</td>
+      <td>
+      <!-- <div style="display:inline-block; vertical-align:center;"> -->
+       <img src="../../assets/img/{{product.image}}"
+        style="width:80px; height:60px; margin-left: auto; margin-right: auto;" />
+      <!-- </div> -->
+      <div style="display: inline-block; padding:40px;">
+        <a routerLink="/product-details/">{{product.productName}}</a>
+      </div>
+      </td>
+      <td class="row">${{product.price | number:"0.2"}}</td>
+      <td class="row">{{product.quantity}}</td>
 
       <!-- <td *ngFor="let info of infoForProducts">
         {{info.quantity}} bye
       </td> -->
 
-  
-      
+
+
       <td class="row">
         <button class=addBtn type="submit">Add</button>
       </td>
 
     </tr>
-
   </table>
 </body>
