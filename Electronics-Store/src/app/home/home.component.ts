@@ -12,11 +12,13 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   items$: Object;
-  
+    login_message;
+
    name:string = '';
    found:boolean;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,  private data: DataService) { }
+
 
   onNameKeyUp(event:any) {
      this.name = event.target.value;
@@ -30,7 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.data.currentStatus.subscribe(message => this.login_message = message)
   }
+  signOut() {
+    this.login_message = 'no';
+    this.data.changeMessage('no');
 
 }
