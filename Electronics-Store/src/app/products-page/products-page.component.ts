@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { range } from 'rxjs';
+import { DataService } from '../data.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-page',
@@ -9,6 +11,10 @@ import { range } from 'rxjs';
 })
 export class ProductsPageComponent implements OnInit {
   
+  //@Input() name: string;
+
+  items$: Object;
+
   private products = [];
   private infoForProducts = [];
   
@@ -17,22 +23,19 @@ export class ProductsPageComponent implements OnInit {
   price:number;
   productDesc:string = ''; 
   found:boolean;
-  productInfoUrl:string = 'https://spring-boot-testing-438.herokuapp.com/allProductInfo';
-
-  constructor(private httpClient:HttpClient) { }
-
   
-  postProductInfo() {
-    this.httpClient.get(this.productInfoUrl)
-    .subscribe(
-      (data: any[]) => {
+  constructor(private dataService: DataService) {}
 
-        if(data.length){
-          console.log(data)
-          this.products = data;
-        }
-      }
-    )
+  // viewProductDetails(productID: number){
+  //   this._router.navigate(['product-details',this.items$], {
+  //     queryParams: { 'productName': this.name}
+  // });
+  // }
+
+  postProductInfo() {
+    this.dataService.getAllProductInfo().subscribe(
+      data => this.items$ = data
+      );
   } 
 
   ngOnInit() {

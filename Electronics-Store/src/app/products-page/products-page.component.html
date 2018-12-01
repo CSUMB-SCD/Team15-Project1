@@ -15,14 +15,14 @@
       <th>Add to Cart</th>
     </tr>
 
-    <tr *ngFor="let product of products" >
+    <tr *ngFor="let product of items$" >
       <td>
       <!-- <div style="display:inline-block; vertical-align:center;"> -->
        <img src="../../assets/img/{{product.image}}"
         style="width:80px; height:60px; margin-left: auto; margin-right: auto;" />
       <!-- </div> -->
       <div style="display: inline-block; padding:40px;">
-        <a routerLink="/product-details/">{{product.productName}}</a>
+          <a [routerLink]="['/product-details']" [queryParams]="{ productName: product.productName }">{{product.productName}}</a>
       </div>
       </td>
       <td class="row">${{product.price | number:"0.2"}}</td>
