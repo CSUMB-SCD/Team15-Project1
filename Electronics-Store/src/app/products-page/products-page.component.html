@@ -1,6 +1,10 @@
 <h1 class= heading> Electronics Available</h1>
 <body>
-  <table cellspacing="2" class="table1">
+  <div *ngIf="login_message != 'no'">
+      <button class="button_right" button #submit (click)="signOut()">
+          <p class="buttonText">Sign Out</p>
+        </button>
+  <table class="table1">
     <tr>
       <th>Product Name</th>
       <th>Price</th>
@@ -16,8 +20,8 @@
           <a [routerLink]="['/product-details']" [queryParams]="{ productName: product.productName }">{{product.productName}}</a>
       </div>
       </td>
-      <td class="row">${{product.price | number:"0.2"}}</td>
-      <td class="row">{{product.quantity}}</td>
+      <td>${{product.price | number:"0.2"}}</td>
+      <td>{{product.quantity}}</td>
 
       <td class="row">
         <button class=addBtn type="submit">Add</button>
@@ -25,4 +29,18 @@
 
     </tr>
   </table>
-</body>
+</div>
+
+<div *ngIf="login_message != 'yes'">
+    <h1>Please Sign In to Browse</h1>
+    <ul>
+        <li>
+            <button class="button" style="width: 200px" routerLink="../sign-in">
+                <p class="buttonText">Go to Sign In</p>
+              </button>
+        </li>
+      </ul>
+      <br><br>
+      <hr>
+  </div>
+  </body>

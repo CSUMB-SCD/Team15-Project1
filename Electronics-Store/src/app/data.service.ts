@@ -7,8 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
   constructor(private httpClient:HttpClient) { }
-  
-  private loginStatus = new BehaviorSubject('No');
+
+  private loginStatus = new BehaviorSubject('no');
   currentStatus = this.loginStatus.asObservable();
 
   changeMessage(status: string) {
