@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
       this.login_message = 'yes';
       this.newMessage(this.login_message);
     }
-    if(success == false){
+    if(success === false){
       this.login_message = 'no';
       this.newMessage(this.login_message);
     }

@@ -28,7 +28,7 @@ import { DataService } from './data.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
