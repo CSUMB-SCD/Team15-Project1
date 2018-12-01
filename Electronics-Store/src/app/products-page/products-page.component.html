@@ -1,11 +1,4 @@
 <h1 class= heading> Electronics Available</h1>
-<!-- <div>
-  <button (click)="postProductInfo()">Post products</button>
-  <button (click)="postProductQuantity()">Post products</button>
-  </div> -->
-
-  <!-- {{info.quantity}}
-  *ngFor="let info of infoForProducts" -->
 <body>
   <div *ngIf="login_message != 'no'">
       <button class="button_right" button #submit (click)="signOut()">
@@ -19,26 +12,18 @@
       <th>Add to Cart</th>
     </tr>
 
-    <tr *ngFor="let product of products" >
+    <tr *ngFor="let product of items$" >
       <td>
-      <!-- <div style="display:inline-block; vertical-align:center;"> -->
        <img src="../../assets/img/{{product.image}}"
         style="width:80px; height:60px; margin-left: auto; margin-right: auto;" />
-      <!-- </div> -->
       <div style="display: inline-block; padding:40px;">
-        <a routerLink="/product-details/">{{product.productName}}</a>
+          <a [routerLink]="['/product-details']" [queryParams]="{ productName: product.productName }">{{product.productName}}</a>
       </div>
       </td>
       <td>${{product.price | number:"0.2"}}</td>
       <td>{{product.quantity}}</td>
 
-      <!-- <td *ngFor="let info of infoForProducts">
-        {{info.quantity}} bye
-      </td> -->
-
-
-
-      <td>
+      <td class="row">
         <button class=addBtn type="submit">Add</button>
       </td>
 

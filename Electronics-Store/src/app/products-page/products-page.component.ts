@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { range } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
-
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.scss']
 })
 export class ProductsPageComponent implements OnInit {
+  
+  items$: Object;
+
   login_message;
   private products = [];
   private infoForProducts = [];
@@ -18,23 +18,14 @@ export class ProductsPageComponent implements OnInit {
   price:number;
   productDesc:string = '';
   found:boolean;
-  productInfoUrl:string = 'https://spring-boot-testing-438.herokuapp.com/allProductInfo';
-
-  constructor(private httpClient:HttpClient, private data: DataService) { }
-
+  
+  constructor(private data: DataService) {}
 
   postProductInfo() {
-    this.httpClient.get(this.productInfoUrl)
-    .subscribe(
-      (data: any[]) => {
-
-        if(data.length){
-          console.log(data)
-          this.products = data;
-        }
-      }
-    )
-  }
+    this.data.getAllProductInfo().subscribe(
+      data => this.items$ = data
+      );
+  } 
 
   ngOnInit() {
     this.postProductInfo();
@@ -45,4 +36,5 @@ export class ProductsPageComponent implements OnInit {
     this.login_message = 'no';
     this.data.changeMessage('no');
   }
+  
 }
