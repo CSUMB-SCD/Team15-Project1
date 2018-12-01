@@ -1,4 +1,4 @@
-
+<script src="../path/to/angular-url-encode/dist/angular-url-encode.js"></script>
 <p>
     <a routerLink="sign-in">
         <button class="button_right">
@@ -20,13 +20,13 @@
 <div>
   <p> Search for a product:
   <input type="text" (keyup)="onNameKeyUp($event)">
-  <button (click)="getProductDescription()">Search</button>
+   <button (click)="getProductInfo()">Search</button>
 </p>
 </div>
 <p>Product Information</p>
 
-<div *ngIf="found">
-  
-    {{name}} is {{price}}
-  <span>{{productDesc}}</span>
+<div *ngFor="let item of items$">
+  <span>{{item.productName}}</span> <br>
+  <span>{{item.price}}</span> <br>
+  <span>{{item.productDesc}}</span>
 </div>

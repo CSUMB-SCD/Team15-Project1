@@ -5,14 +5,12 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
 export class DataService {
   constructor(private httpClient:HttpClient) { }
-  // getProductInfo(){
-  //   return this.httpClient.get('http://localhost:8081/allProductInfo')
-  // }
+  
   private loginStatus = new BehaviorSubject('No');
   currentStatus = this.loginStatus.asObservable();
+
   changeMessage(status: string) {
     this.loginStatus.next(status)
   }
@@ -23,4 +21,8 @@ export class DataService {
   onNameKeyUp(event:any){
     console.log(event.target.value);
   }
+
+  getProductInfoByName(productName) { return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/search?product-name='+ encodeURI(productName) )}
+  
+ 
 }
