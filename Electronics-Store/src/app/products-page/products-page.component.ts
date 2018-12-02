@@ -1,12 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { range } from 'rxjs';
 import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.scss']
 })
 export class ProductsPageComponent implements OnInit {
-  
+
   items$: Object;
 
   login_message;
@@ -18,14 +21,14 @@ export class ProductsPageComponent implements OnInit {
   price:number;
   productDesc:string = '';
   found:boolean;
-  
+
   constructor(private data: DataService) {}
 
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
       data => this.items$ = data
       );
-  } 
+  }
 
   ngOnInit() {
     this.postProductInfo();
@@ -36,5 +39,4 @@ export class ProductsPageComponent implements OnInit {
     this.login_message = 'no';
     this.data.changeMessage('no');
   }
-  
 }
