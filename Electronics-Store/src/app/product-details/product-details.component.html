@@ -3,10 +3,23 @@
 <h1 class=pdetails>Electronic Details</h1>
 
   <body *ngFor="let product of item$">
-    <img src="../../assets/img/{{product.image}}"
-         alt="no image" width="428" height="428" Align="left" HSPACE="50" VSPACE="50" position:relative/>
-    <h3>Product Name: </h3> <p>{{product.productName}}</p>
-
+      <h3>Product Name: </h3> <p>{{product.productName}}</p>
+      <div class="carousel-w">
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <img src="../../assets/img/{{product.image}}" alt="AirPods" width="428" height="428">
+            </ng-template>
+      
+          <ng-template ngbSlide>
+              <img src="../../assets/img/{{product.image2}}" alt="4k Apple TV" width="428" height="428">
+            </ng-template>
+      
+          <ng-template ngbSlide>
+              <img src="../../assets/img/{{product.image3}}" alt="Beats" width="428" height="428">
+            </ng-template>
+          </ngb-carousel>
+        </div>
+        
     <h3> Description: </h3>
     <p>
       {{product.productDesc}}

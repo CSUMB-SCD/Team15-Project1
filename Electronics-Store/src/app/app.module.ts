@@ -12,6 +12,7 @@ import { ProductsPageComponent } from './products-page/products-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from './data.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DataService } from './data.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
