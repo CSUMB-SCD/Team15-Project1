@@ -7,14 +7,14 @@
             <label for="username">Username: </label>
             <input type="username" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required />
             <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
-                <div *ngIf="username.errors.required">Username is required</div>
+                <div>Username is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="password">Password: </label>
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required />
             <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                <div *ngIf="password.errors.required">Password is required</div>
+                <div>Password is required</div>
             </div>
         </div>
             <br>
@@ -31,7 +31,8 @@
 </div>
 
 <div *ngIf="login_message == 'yes'">
-  <h1 style="text-align: center;">You are now signed in.</h1>
+
+  <h1 style="text-align: center;">You are now signed in, {{ user.username }}</h1>
   <br>
 
   <button class="button" style="width: 200px" routerLink="../products-page">
@@ -42,11 +43,6 @@
       <button class="button_right"  button #submit (click)="signOut()">
         <p class="buttonText">Sign Out</p>
       </button>
-      <!-- <a routerLink="products-page">
-          <button class="button_right">
-            <p class="buttonText">Browse Items</p>
-          </button>
-        </a> -->
     </li>
   </ul>
   <br><br>
