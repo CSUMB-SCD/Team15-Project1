@@ -21,8 +21,39 @@ export class ProductsPageComponent implements OnInit {
   price:number;
   productDesc:string = '';
   found:boolean;
+  name:string ='';
 
+  checkoutOption:boolean = false;
+  private cart = [] ;
+  private addedProducts = [];
   constructor(private data: DataService) {}
+
+  //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
+  addToCart(addedProducts){
+    this.addedProducts = addedProducts;
+    console.log(this.addedProducts)
+    
+    var confirm = window.confirm("Proceeding to add to cart...");
+    if(confirm==true){
+      var checkout = window.confirm("Would you like to checkout or continue shopping?")
+      if(checkout == true){
+        checkout=true;
+        console.log("Checking you out")
+      }
+      else{
+        console.log("Not checking you out")
+      }
+      //alert("Item was added to your cart")
+      //this.cart.push(addedProducts);
+      //console.log(this.cart)
+      
+    }
+    else{
+      alert("Item was not added to your cart");
+    }
+  }
+
+
 
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
