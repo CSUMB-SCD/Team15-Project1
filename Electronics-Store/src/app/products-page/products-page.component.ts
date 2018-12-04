@@ -24,14 +24,16 @@ export class ProductsPageComponent implements OnInit {
   name:string ='';
 
   checkoutOption:boolean = false;
-  private cart = [] ;
   private addedProducts = [];
   constructor(private data: DataService) {}
 
   //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
   addToCart(addedProducts){
-    this.addedProducts = addedProducts;
-    console.log(this.addedProducts)
+    this.data.checkoutCart.push(addedProducts)
+    console.log(this.data.checkoutCart)
+    //this.temp = JSON.stringify(addedProducts);
+    //console.log(this.temp);
+    
     
     var confirm = window.confirm("Proceeding to add to cart...");
     if(confirm==true){
@@ -44,8 +46,6 @@ export class ProductsPageComponent implements OnInit {
         console.log("Not checking you out")
       }
       //alert("Item was added to your cart")
-      //this.cart.push(addedProducts);
-      //console.log(this.cart)
       
     }
     else{

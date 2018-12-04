@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
   constructor(private httpClient:HttpClient) { }
 
+  public checkoutCart = [];
+  
   private loginStatus = new BehaviorSubject('no');
   currentStatus = this.loginStatus.asObservable();
 
