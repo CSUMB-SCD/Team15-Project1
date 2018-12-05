@@ -1,11 +1,19 @@
+<div id="prod_confrmdiv"> Would you like to add this item to your cart? <br>
+  <button id="prod_truebtn">Yes</button>
+  <button id="prod_falsebtn">No</button>
+</div>
+<div id="prod_continuediv"> Would you like to checkout or continue shopping?
+  <button id="Prodtruebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Checkout</button>
+  <button id="Prodfalsebtn2">Continue Shopping</button>
+</div>
 <div *ngIf="login_message != 'no'">
   <button class="button_right" button #submit (click)="signOut()">
       <p class="buttonText">Sign Out</p>
   </button>
 </div>
-<h1 class=pdetails>Electronic Details</h1>
 
-<h3>Product Name: </h3> <p>{{productName}}</p>
+<h1 class=pdetails>Electronic Details</h1>
+<h2>Product Name: </h2> <h3 class =pName><strong>{{productName}}</strong></h3>
   <div class="carousel-w">
     <ngb-carousel>
       <ng-template ngbSlide>
