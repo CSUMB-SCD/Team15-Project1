@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { range } from 'rxjs';
 import { DataService } from '../data.service';
 import { $ } from 'protractor';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ProductsPageComponent implements OnInit {
   name:string ='';
 
   private addedProducts = [];
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private router: Router) {}
 
   // //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
   // addToCart(addedProducts){
@@ -34,8 +35,8 @@ export class ProductsPageComponent implements OnInit {
   //   console.log(this.data.checkoutCart)
   //   //this.temp = JSON.stringify(addedProducts);
   //   //console.log(this.temp);
-    
-    
+
+
   //   var confirm = window.confirm("Proceeding to add to cart...");
   //   if(confirm==true){
   //     var checkout = window.confirm("Would you like to checkout or continue shopping?")
@@ -47,7 +48,7 @@ export class ProductsPageComponent implements OnInit {
   //       console.log("Not checking you out")
   //     }
   //     //alert("Item was added to your cart")
-      
+
   //   }
   //   else{
   //     alert("Item was not added to your cart");
@@ -99,5 +100,6 @@ export class ProductsPageComponent implements OnInit {
   signOut() {
     this.login_message = 'no';
     this.data.changeMessage('no');
+    this.router.navigate(['../home']);
   }
 }

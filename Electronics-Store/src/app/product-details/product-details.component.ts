@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -26,9 +26,10 @@ export class ProductDetailsComponent implements OnInit {
   img2:string;
   img3:string;
 
+  login_message;
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
-   }
+
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) { }
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
@@ -47,7 +48,7 @@ export class ProductDetailsComponent implements OnInit {
       this.data.checkoutCart.push(this.temp$[0]);
     }
      console.log(this.data.checkoutCart);
-    
+
     var confirm = window.confirm("Proceeding to add to cart...");
     if(confirm==true){
       var checkout = window.confirm("Would you like to checkout or continue shopping?")
@@ -59,7 +60,7 @@ export class ProductDetailsComponent implements OnInit {
         console.log("Not checking you out");
       }
       //alert("Item was added to your cart")
-      
+
     }
     else{
       alert("Item was not added to your cart");
@@ -75,7 +76,7 @@ export class ProductDetailsComponent implements OnInit {
     console.log(param);
 
     this.data.getProductInfoByName(param).subscribe(
-      data => { 
+      data => {
         this.temp$ = data;
         this.item$ = data[0];
         this.productName = this.item$.productName;
@@ -85,17 +86,26 @@ export class ProductDetailsComponent implements OnInit {
         this.img1 = this.item$.image;
         this.img2 = this.item$.image2;
         this.img3 = this.item$.image3;
-        
+
         this.getQuantity();
       });
 
-      
+
    }
 
 
   ngOnInit() {
 
     this.getAllProductDetails();
+    this.data.currentStatus.subscribe(message => this.login_message = message);
+
   }
+
+  signOut() {
+    this.login_message = 'no';
+    this.data.changeMessage('no');
+    window.location.reload();
+    this.router.navigate(['../home']);
+}
 
 }

@@ -1,10 +1,15 @@
+<div *ngIf="login_message != 'no'">
+  <button class="button_right" button #submit (click)="signOut()">
+      <p class="buttonText">Sign Out</p>
+  </button>
+</div>
 <h1 class=pdetails>Electronic Details</h1>
 
 <h3>Product Name: </h3> <p>{{productName}}</p>
   <div class="carousel-w">
     <ngb-carousel>
       <ng-template ngbSlide>
-          
+
         <img src="../../assets/img/{{img1}}" alt="{{productname}}" width="428" height="428">
       </ng-template>
 
@@ -20,13 +25,13 @@
 
 <h3> Description: </h3> <p>{{productDesc}}</p> <br>
 
-  <h4 class=price type="text" style="display:inline-block">Price:</h4> {{price}}
+  <h4 class=price type="text" style="display:inline-block">Price:</h4> {{price | number:"0.2"}}
   <h4 class=amt type="text" style="display:inline">Amount in stock: </h4> {{quantity}}
   <br/>
   <h4 style="display:inline">Quantity: </h4>
   <select [(ngModel)]="selectedValue" (ngModelChange)="setQuantityAmt($event)" class =sel style="display:inline" >
     <option *ngFor="let option of options">{{option}}</option>
- 
+
   </select>
   <button class=addToCart type="submit" (click)="addToCart()">Add to Cart</button>
   <BR CLEAR="left"/>

@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent
   },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
 ];
 
 @NgModule({

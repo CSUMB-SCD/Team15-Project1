@@ -1,3 +1,8 @@
+<div *ngIf="login_message != 'no'">
+  <button class="button_right" button #submit (click)="signOut()">
+      <p class="buttonText">Sign Out</p>
+  </button>
+</div>
 <h1 class= heading>Reciept</h1>
 <body>
   <table class="table1">
@@ -22,6 +27,6 @@
       <h3 class=price type="text" style="display:inline-block">Total Price:$</h3>
   </div>
   <!--<div class = "thanks">-->
-    <h1 class=ThankYou type="submit"><strong>Thank You for Shoping With Us!</strong></h1>
+    <h1 class=ThankYou><strong>Thank You for Shoping With Us!</strong></h1>
   <!--</div>-->
 </body>

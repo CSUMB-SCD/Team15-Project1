@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  login_message;
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentStatus.subscribe(message => this.login_message = message);
+
   }
 
 }
