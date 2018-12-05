@@ -22,10 +22,9 @@ export class DataService {
     console.log(event.target.value);
   }
 
-  getProductInfoByName(productName) {
-     return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/search?product-name=' + encodeURI(productName) );
-  }
-  getAllProductInfo() {
-    return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/allProductInfo');
-  }
+  getProductInfoByName(productName) { return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/search?product-name='+ encodeURI(productName) )}
+
+  getAllProductInfo() {return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/allProductInfo') }
+
+  //Trying to push to github
 }
