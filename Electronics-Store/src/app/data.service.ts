@@ -6,18 +6,19 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
+
   private loginStatus = new BehaviorSubject('no');
   currentStatus = this.loginStatus.asObservable();
 
   changeMessage(status: string) {
-    this.loginStatus.next(status)
+    this.loginStatus.next(status);
   }
 
   // functions to return JSON
   getUsers() { return this.httpClient.get('https://team15spring-users.herokuapp.com/allUsers')}
 
-  onNameKeyUp(event:any){
+  onNameKeyUp(event: any) {
     console.log(event.target.value);
   }
 
