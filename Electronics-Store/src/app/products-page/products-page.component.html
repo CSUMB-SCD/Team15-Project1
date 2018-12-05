@@ -1,39 +1,48 @@
 <h1 class= heading> Electronics Available</h1>
-<body>
-   <div> *ngIf="login_message != 'no'">
+   <div *ngIf="login_message != 'no'">
       <button class="button_right" button #submit (click)="signOut()">
           <p class="buttonText">Sign Out</p>
         </button>
-  <table class="table1">
-    <tr>
-      <th>Product Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Add to Cart</th>
-    </tr>
+    <table class="table1">
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Add to Cart</th>
+      </tr>
 
-    <tr *ngFor="let product of items$" >
-      <td>
-       <img src="../../assets/img/{{product.image}}"
-        style="width:80px; height:60px; margin-left: auto; margin-right: auto;" />
-      <div style="display: inline-block; padding:40px;">
-          <a [routerLink]="['/product-details']" [queryParams]="{ productName: product.productName }">{{product.productName}}</a>
-      </div>
-      </td>
-      <td>${{product.price | number:"0.2"}}</td>
-      <td>{{product.quantity}}</td>
-      <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
-      <td>
-        <button class=addBtn type="submit" (click)="addToCart(product)">Add to Cart</button>
-      </td>
+      <tr *ngFor="let product of items$" >
+        <td>
+        <img src="../../assets/img/{{product.image}}" style="width:80px; height:60px; margin-left: auto; margin-right: auto;" />
+        <div style="display: inline-block; padding:40px;">
+            <a [routerLink]="['/product-details']" [queryParams]="{ productName: product.productName }">{{product.productName}}</a>
+        </div>
+        </td>
+        <td>${{product.price | number:"0.2"}}</td>
+        <td>{{product.quantity}}</td>
+        <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
+        <td>
+          <button class=addBtn type="submit" (click)="addToCart(product)">Add to Cart</button>
+        </td>
+          <!--<button class=addBtn type="submit" (click)="addToCart(product)">Add</button>-->
+          <!-- Dialog -->
+        <div id="id_confrmdiv"> Proceeding to cart...
+          <button id="id_truebtn">Yes</button>
+          <button id="id_falsebtn">No</button>
+        </div>
+        <div id="id_continuediv"> Would you like to checkout or continue shopping?
+          <button id="truebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Yes</button>
+          <button id="falsebtn2">No</button>
+        </div>
+<!-- <button (click)="addToCart()">Add</button> -->
 
-      <div>
-          <button type ="submit" routerLink='/checkout'>CHECKOUT</button>
-      </div>      
-
+        <!-- <div>
+            <button type ="submit" routerLink='/checkout'>CHECKOUT</button>
+        </div>       -->
+          <!-- <button type ="submit" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">CHECKOUT</button> -->
     </tr>
   </table>
-    
+
 </div>
 
 <div *ngIf="login_message != 'yes'">

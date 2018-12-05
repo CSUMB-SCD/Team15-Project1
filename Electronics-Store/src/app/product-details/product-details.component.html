@@ -1,28 +1,32 @@
 <h1 class=pdetails>Electronic Details</h1>
 
-    <h3>Product Name: </h3> <p>{{productName}}</p>
-    <div class="carousel-w">
-        <ngb-carousel>
-          <ng-template ngbSlide>
-              
-            <img src="../../assets/img/{{img1}}" alt="{{productname}}" width="428" height="428">
-          </ng-template>
-    
-        <ng-template ngbSlide>
-            <img src="../../assets/img/{{img2}}" alt="{{productname}}" width="428" height="428">
-          </ng-template>
-    
-        <ng-template ngbSlide>
-            <img src="../../assets/img/{{img3}}" alt="{{productname}}" width="428" height="428">
-          </ng-template>
-        </ngb-carousel>
-      </div>
-      
-  <h3> Description: </h3>
-  <p>
-    {{productDesc}}
+<h3>Product Name: </h3> <p>{{productName}}</p>
+  <div class="carousel-w">
+    <ngb-carousel>
+      <ng-template ngbSlide>
+          
+        <img src="../../assets/img/{{img1}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
 
-  </p>
+    <ng-template ngbSlide>
+        <img src="../../assets/img/{{img2}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
+
+    <ng-template ngbSlide>
+        <img src="../../assets/img/{{img3}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+<h3> Description: </h3> <p>{{productDesc}}</p>
+    <h3 class=price type="text" style="display:inline-block">Price:$</h3> {{product.price}}
+    <h3 class=amt type="text" style="display:inline">Amt. In Stock: #</h3> {{product.quantity}}
+    <br/>
+    <h3 style="display:inline">Amnt. to Add: </h3>
+<input type="number" name="quantity" min="1" max="{{product.quantity}}" value=1>
+    <button class=addToCart type="submit">Add to Cart</button>
+    <BR CLEAR="left"/>
+
   <h4 class=price type="text" style="display:inline-block">Price:</h4> {{price}}
   <h4 class=amt type="text" style="display:inline">Amount in stock: </h4> {{quantity}}
   <br/>
