@@ -27,16 +27,26 @@
       <td>{{product.quantity}}</td>
       <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
       <td>
-        <button class=addBtn type="submit" (click)="addToCart(product)">Add</button>
-      </td>
+        <!--<button class=addBtn type="submit" (click)="addToCart(product)">Add</button>-->
+        <!-- Dialog -->
+        <div id="id_confrmdiv"> Proceeding to cart...
+          <button id="id_truebtn">Yes</button>
+          <button id="id_falsebtn">No</button>
+      </div>
+      <div id="id_continuediv"> Would you like to checkout or continue shopping?
+        <button id="truebtn2">Yes</button>
+        <button id="falsebtn2">No</button>
+    </div>
 
+      <button (click)="addToCart()">Add</button>
+      </td>
       <div>
           <button type ="submit" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">CHECKOUT</button>
-      </div>      
+      </div>
 
     </tr>
   </table>
-    
+
 </div>
 
 <div *ngIf="login_message != 'yes'">
@@ -52,7 +62,7 @@
       <hr>
   </div>
 
-  
+
   </body>
   </html>
 
