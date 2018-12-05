@@ -13,6 +13,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from './data.service';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
