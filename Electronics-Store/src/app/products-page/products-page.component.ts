@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { range } from 'rxjs';
@@ -22,7 +23,7 @@ export class ProductsPageComponent implements OnInit {
   productDesc:string = '';
   found:boolean;
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private router: Router) {}
 
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
@@ -38,5 +39,6 @@ export class ProductsPageComponent implements OnInit {
   signOut() {
     this.login_message = 'no';
     this.data.changeMessage('no');
+    this.router.navigate(['../home']);
   }
 }

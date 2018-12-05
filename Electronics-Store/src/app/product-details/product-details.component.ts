@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -10,9 +10,11 @@ import { DataService } from '../data.service';
 export class ProductDetailsComponent implements OnInit {
 
   item$
+  login_message;
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
-    
+
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
+
    }
 
    getAllProductDetails(){
@@ -29,7 +31,15 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.getAllProductDetails();
+    this.data.currentStatus.subscribe(message => this.login_message = message)
+
 
   }
+
+  signOut() {
+    this.login_message = 'no';
+    this.data.changeMessage('no');
+    this.router.navigate(['../home']);
+}
 
 }
