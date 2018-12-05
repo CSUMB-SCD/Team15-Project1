@@ -43,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
    }
 
    addToCart(){
-    for(let i=0;i<=this.quantityAmt;i++){
+    for(let i=0;i<this.quantityAmt;i++){
       this.data.checkoutCart.push(this.temp$[0]);
     }
      console.log(this.data.checkoutCart);
