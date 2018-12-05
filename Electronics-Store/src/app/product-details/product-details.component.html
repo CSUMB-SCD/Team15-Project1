@@ -1,45 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <p *ngIf="login_message != 'no'">
-        <button class="button_right" button #submit (click)="signOut()">
-          <p class="buttonText">Sign Out</p>
-        </button>
-    </p>
+<div *ngIf="login_message != 'no'">
+  <button class="button_right" button #submit (click)="signOut()">
+      <p class="buttonText">Sign Out</p>
+  </button>
+</div>
 <h1 class=pdetails>Electronic Details</h1>
 
-  <body *ngFor="let product of item$">
-      <h3>Product Name: </h3> <p>{{product.productName}}</p>
-      <div class="carousel-w">
-          <ngb-carousel>
-            <ng-template ngbSlide>
-              <img src="../../assets/img/{{product.image}}" alt="{{product.productName}}" width="428" height="428">
-            </ng-template>
+<h3>Product Name: </h3> <p>{{productName}}</p>
+  <div class="carousel-w">
+    <ngb-carousel>
+      <ng-template ngbSlide>
 
-          <ng-template ngbSlide>
-              <img src="../../assets/img/{{product.image2}}" alt="{{product.productName}}" width="428" height="428">
-            </ng-template>
+        <img src="../../assets/img/{{img1}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
 
-          <ng-template ngbSlide>
-              <img src="../../assets/img/{{product.image3}}" alt="{{product.productName}}" width="428" height="428">
-            </ng-template>
-          </ngb-carousel>
-        </div>
+    <ng-template ngbSlide>
+        <img src="../../assets/img/{{img2}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
 
-    <h3> Description: </h3>
-    <p>
-      {{product.productDesc}}
+    <ng-template ngbSlide>
+        <img src="../../assets/img/{{img3}}" alt="{{productname}}" width="428" height="428">
+      </ng-template>
+    </ngb-carousel>
+  </div>
 
-    </p>
-    <h3 class=price type="text" style="display:inline-block">Price:$</h3> {{product.price}}
-    <h3 class=amt type="text" style="display:inline">Amt. In Stock: #</h3> {{product.quantity}}
-    <br/>
-    <h3 style="display:inline">Amnt. to Add: </h3>
-    <input type="number" name="quantity" min="1" max="{{product.quantity}}" value=1>
+<h3> Description: </h3> <p>{{productDesc}}</p> <br>
 
-    <button class=addToCart type="submit">Add to Cart</button>
-    <BR CLEAR="left"/>
+  <h4 class=price type="text" style="display:inline-block">Price:</h4> {{price | number:"0.2"}}
+  <h4 class=amt type="text" style="display:inline">Amount in stock: </h4> {{quantity}}
+  <br/>
+  <h4 style="display:inline">Quantity: </h4>
+  <select [(ngModel)]="selectedValue" (ngModelChange)="setQuantityAmt($event)" class =sel style="display:inline" >
+    <option *ngFor="let option of options">{{option}}</option>
 
-  </body>
-</html>
-
+  </select>
+  <button class=addToCart type="submit" (click)="addToCart()">Add to Cart</button>
+  <BR CLEAR="left"/>
 
