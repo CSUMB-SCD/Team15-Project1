@@ -23,7 +23,6 @@ export class ProductsPageComponent implements OnInit {
   found:boolean;
   name:string ='';
 
-  checkoutOption:boolean = false;
   private addedProducts = [];
   constructor(private data: DataService) {}
 

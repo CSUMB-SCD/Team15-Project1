@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-
 <h1 class= heading> Electronics Available</h1>
 <body>
-   <div> <!--</div> *ngIf="login_message != 'no'"> -->
+   <div> *ngIf="login_message != 'no'">
       <button class="button_right" button #submit (click)="signOut()">
           <p class="buttonText">Sign Out</p>
         </button>
@@ -27,7 +24,7 @@
       <td>{{product.quantity}}</td>
       <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
       <td>
-        <button class=addBtn type="submit" (click)="addToCart(product)">Add</button>
+        <button class=addBtn type="submit" (click)="addToCart(product)">Add to Cart</button>
       </td>
 
       <div>
@@ -51,8 +48,3 @@
       <br><br>
       <hr>
   </div>
-
-  
-  </body>
-  </html>
-

@@ -9,12 +9,22 @@ export class DataService {
   constructor(private httpClient:HttpClient) { }
 
   public checkoutCart = [];
-  
+  total:number = 0;
+
   private loginStatus = new BehaviorSubject('no');
   currentStatus = this.loginStatus.asObservable();
 
   changeMessage(status: string) {
     this.loginStatus.next(status)
+  }
+
+  getTotalPrice():number{
+    this.total=0;
+    for(let i of this.checkoutCart){
+      this.total += Number(i.price);
+    }
+    console.log(this.total);
+    return this.total;
   }
 
   // functions to return JSON

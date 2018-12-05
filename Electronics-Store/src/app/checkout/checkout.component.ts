@@ -10,23 +10,18 @@ import { DataService } from '../data.service';
 export class CheckoutComponent implements OnInit {
 
   private checkout = [];
-  //total:string;
+  total:number = 0;
   temp:string;
+  
 
   constructor(private route: ActivatedRoute, data: DataService) { 
     this.checkout= data.checkoutCart;
-    console.log(this.checkout);
-    console.log(document.getElementById('total'));
-    //console.log(this.total);
-
+    this.total = data.getTotalPrice();
   }
 
   
 
-  
-
   ngOnInit() {
-
   }
 
 }
