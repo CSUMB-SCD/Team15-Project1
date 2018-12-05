@@ -43,13 +43,35 @@ export class ProductDetailsComponent implements OnInit {
       }
    }
 
-   addToCart(){
+   addToCart() {
     for(let i=0;i<this.quantityAmt;i++){
       this.data.checkoutCart.push(this.temp$[0]);
     }
      console.log(this.data.checkoutCart);
 
-    var confirm = window.confirm("Proceeding to add to cart...");
+     document.getElementById('prod_confrmdiv').style.display = 'block';
+     document.getElementById('prod_truebtn').onclick = function() {
+      // do your delete operation
+      //var checkout = window.confirm('Would you like to checkout or continue shopping?');
+      document.getElementById('prod_confrmdiv').style.display = 'none';
+      document.getElementById('prod_continuediv').style.display = 'block';
+      document.getElementById('Prodtruebtn2').onclick = function() {
+        document.getElementById('prod_continuediv').style.display = 'none';
+      };
+      document.getElementById('Prodfalsebtn2').onclick = function() {
+        document.getElementById('prod_continuediv').style.display = 'none';
+      };
+       //alert('true');
+   };
+
+   document.getElementById('prod_falsebtn').onclick = function() {
+     console.log('Not checking you out');
+     document.getElementById('prod_confrmdiv').style.display = 'none';
+        //alert('false');
+      return false;
+   };
+
+    /*var confirm = window.confirm("Proceeding to add to cart...");
     if(confirm==true){
       var checkout = window.confirm("Would you like to checkout or continue shopping?")
       if(checkout == true){
@@ -64,7 +86,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     else{
       alert("Item was not added to your cart");
-    }
+    }*/
   }
 
 
