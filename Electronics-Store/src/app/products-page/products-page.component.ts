@@ -25,15 +25,40 @@ export class ProductsPageComponent implements OnInit {
   found:boolean;
   name:string ='';
 
-  checkoutOption:boolean = false;
-  private cart = [] ;
   private addedProducts = [];
   constructor(private data: DataService) {}
 
-  //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
+  // //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
+  // addToCart(addedProducts){
+  //   this.data.checkoutCart.push(addedProducts)
+  //   console.log(this.data.checkoutCart)
+  //   //this.temp = JSON.stringify(addedProducts);
+  //   //console.log(this.temp);
+    
+    
+  //   var confirm = window.confirm("Proceeding to add to cart...");
+  //   if(confirm==true){
+  //     var checkout = window.confirm("Would you like to checkout or continue shopping?")
+  //     if(checkout == true){
+  //       checkout=true;
+  //       console.log("Checking you out")
+  //     }
+  //     else{
+  //       console.log("Not checking you out")
+  //     }
+  //     //alert("Item was added to your cart")
+      
+  //   }
+  //   else{
+  //     alert("Item was not added to your cart");
+  //   }
+  // }
   addToCart(addedProducts) {
-    this.addedProducts = addedProducts;
-    console.log(this.addedProducts);
+    // this.addedProducts = addedProducts;
+    // console.log(this.addedProducts);
+
+    this.data.checkoutCart.push(addedProducts)
+    console.log(this.data.checkoutCart)
 
     document.getElementById('id_confrmdiv').style.display = 'block'; //this is the replace of this line
 
@@ -58,6 +83,8 @@ export class ProductsPageComponent implements OnInit {
        return false;
     };
   }
+
+
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
       data => this.items$ = data

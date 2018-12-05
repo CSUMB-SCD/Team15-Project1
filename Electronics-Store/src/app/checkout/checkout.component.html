@@ -1,18 +1,23 @@
 <h1 class= heading> Checkout </h1>
-<body>
-  <table class="table1">
-    <tr>
-      <th>Product Name</th>
-      <th>Amt. in Stock</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-  <div class = "row">
-    <button class=addBtn type="submit">Confirm Purchase</button>
-  </div>
-</body>
+<table class="table1">
+  <tr>
+    <th>Product Name</th>
+    <th>Amt. in Stock</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let display of checkout">
+    <td>{{display.productName}}</td>
+    <td>{{display.quantity}}</td>
+    <td>{{display.price }}</td>
+  </tr>
+
+
+
+    
+</table>
+
+
+<h3>Total: {{ total }}</h3>
+
+<div class = "row">
+<button class=addBtn type="submit">Confirm Purchase</button>

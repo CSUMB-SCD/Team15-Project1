@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,11 +9,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  private checkout = [];
+  total:number = 0;
+  temp:string;
+  
+
+  constructor(private route: ActivatedRoute, data: DataService) { 
+    this.checkout= data.checkoutCart;
+    this.total = data.getTotalPrice();
+  }
+
+  
 
   ngOnInit() {
-    const param: string = this.route.snapshot.queryParamMap.get('this.addedProducts');
-    console.log(param);
   }
 
 }
