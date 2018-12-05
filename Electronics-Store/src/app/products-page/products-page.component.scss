@@ -22,9 +22,9 @@ body { font-family: sans-serif; }
 #id_confrmdiv
 {
     display: none;
-    background-color: #eee;
+    background-color: white;
     border-radius: 5px;
-    border: 1px solid #aaa;
+    border: 2px solid black;
     position: fixed;
     width: 350px;
     left: 50%;
@@ -36,11 +36,11 @@ body { font-family: sans-serif; }
 #id_continuediv
 {
   display: none;
-    background-color: #eee;
+    background-color: white;
     border-radius: 5px;
-    border: 1px solid #aaa;
+    border: 2px solid black;
     position: fixed;
-    width: 300px;
+    width: 350px;
     left: 50%;
     margin-left: -150px;
     padding: 6px 8px 8px;
@@ -48,7 +48,7 @@ body { font-family: sans-serif; }
     text-align: center;
 }
 #id_confrmdiv button {
-    background-color: #ccc;
+    background-color: lightblue;
     display: inline-block;
     border-radius: 3px;
     border: 1px solid #aaa;
@@ -58,13 +58,13 @@ body { font-family: sans-serif; }
     cursor: pointer;
 }
 #id_continuediv button {
-  background-color: #ccc;
+  background-color: lightblue;
   display: inline-block;
   border-radius: 3px;
   border: 1px solid #aaa;
   padding: 2px;
   text-align: center;
-  width: 80px;
+  width: 300px;
   cursor: pointer;
 }
 #id_confrmdiv .button:hover
@@ -84,6 +84,13 @@ body { font-family: sans-serif; }
 {
     text-align: left;
     margin-bottom: 8px;
+}
+#id_truebtn {
+  margin: 5%;
+}
+#truebtn2{
+  margin: 5%;
+
 }
 
 // .row {
