@@ -16,6 +16,8 @@ export class CheckoutInfoComponent implements OnInit {
   }
 
   onSubmit() {
+    // alert(JSON.stringify(this.model));
+    console.log(this.model);
     this.router.navigate(['../thank-you']);
-  } 
+  }
 }
