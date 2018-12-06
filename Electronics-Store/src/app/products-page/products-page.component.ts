@@ -31,12 +31,12 @@ export class ProductsPageComponent implements OnInit {
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}
 
-  addedToCart(addedProducts) {
+  addedToCart() {
 
-    this.productId = addedProducts.id;
-    this.price = addedProducts.price;
-    this.quantity = addedProducts.quantity;
-    this.productName = addedProducts.productName;
+    // this.productId = addedProducts.id;
+    // this.price = addedProducts.price;
+    // this.quantity = addedProducts.quantity;
+    // this.productName = addedProducts.productName;
      //this is the replace of this line
      document.getElementById('id_confrmdiv').style.display = 'block';
     document.getElementById('id_truebtn').onclick = function() {
