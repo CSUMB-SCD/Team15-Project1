@@ -9,12 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class CheckoutInfoComponent implements OnInit {
 
   model: any = {};
+  userCreditMessage;
+  login_message;
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentUserCreditStatus.subscribe(creditMessage => this.userCreditMessage = creditMessage);
+    console.log(this.userCreditMessage);
+    this.data.currentStatus.subscribe(message => this.login_message = message);
   }
 
+
+  newCreditStatus(changeCreditStatus){
+    this.data.changeCurrentCreditStatus(changeCreditStatus);
+  }
   onSubmit() {
     // alert(JSON.stringify(this.model));
     console.log(this.model);
