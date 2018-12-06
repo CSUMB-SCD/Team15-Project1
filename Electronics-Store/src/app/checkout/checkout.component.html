@@ -1,4 +1,3 @@
-<body>
 <div *ngIf="login_message != 'yes'">
     <h1>Please Sign In To View Your Cart.</h1>
     <ul>
@@ -33,13 +32,30 @@
 <table class="table1">
   <tr>
     <th>Product Name</th>
-    <th>Amt. in Stock</th>
     <th>Price</th>
+    <th>Quantity</th>
+    <th>Edit Quantity</th>
   </tr>
-  <tr *ngFor="let display of checkout">
-    <td>{{display.productName}}</td>
-    <td>{{display.quantity}}</td>
-    <td>${{display.price }}</td>
+  
+  <tr *ngFor="let productId of checkout; let i = index"> 
+
+    <td>{{testData[i][2]}}</td>
+    <td>{{testData[i][0]}}</td>
+    <td>{{testData[i][1]}}</td>
+      <!-- <td> {{display.productName}}</td>
+      <td>{{display.price }}</td> -->
+
+    <!-- <select [(ngModel)]="selectedValue" (ngModelChange)="tmp($event)" class =sel style="display:inline">
+        <option *ngFor="let option of options">{{option}}</option>
+  
+    </select> -->
+
+    <select class =sel style="display:inline">
+      <option *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
+        {{option}} 
+      </option>
+    </select>
+
   </tr>
 </table>
 
@@ -58,5 +74,4 @@
 </div>
 </div>
 
-</body>
 

@@ -13,10 +13,10 @@ export class ProductDetailsComponent implements OnInit {
   item$
   test:number;
   temp:string;
-  quantityAmt:number;
+  quantityAmt:number = 1;
   private addedProducts = [];
   selectedValue: string;
-  private options = []; //= ["1","2","3","4"]
+  private options = [];
 
   price:string;
   quantity:string;
@@ -25,6 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   img1:string;
   img2:string;
   img3:string;
+  productId:string;
 
   login_message;
 
@@ -33,26 +34,23 @@ export class ProductDetailsComponent implements OnInit {
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
-     console.log($amount);
+     console.log("set"+$amount);
    }
 
    getQuantity(){
-    this.quantityAmt = Number(this.quantity);
-    for(let i=0;i<=this.quantityAmt;i++){
+    for(let i=1;i<=Number(this.quantity);i++) {
       this.options.push(String(i));
       }
    }
 
-   addToCart() {
-    for(let i=0;i<this.quantityAmt;i++){
-      this.data.checkoutCart.push(this.temp$[0]);
-    }
-     console.log(this.data.checkoutCart);
+  addToCart() {
+
+    this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
 
      document.getElementById('prod_confrmdiv').style.display = 'block';
      document.getElementById('prod_truebtn').onclick = function() {
       // do your delete operation
-      //var checkout = window.confirm('Would you like to checkout or continue shopping?');
+      
       document.getElementById('prod_confrmdiv').style.display = 'none';
       document.getElementById('prod_continuediv').style.display = 'block';
       document.getElementById('Prodtruebtn2').onclick = function() {
@@ -61,36 +59,15 @@ export class ProductDetailsComponent implements OnInit {
       document.getElementById('Prodfalsebtn2').onclick = function() {
         document.getElementById('prod_continuediv').style.display = 'none';
       };
-       //alert('true');
    };
 
    document.getElementById('prod_falsebtn').onclick = function() {
      console.log('Not checking you out');
      document.getElementById('prod_confrmdiv').style.display = 'none';
-        //alert('false');
       return false;
    };
 
-    /*var confirm = window.confirm("Proceeding to add to cart...");
-    if(confirm==true){
-      var checkout = window.confirm("Would you like to checkout or continue shopping?")
-      if(checkout == true){
-        checkout=true;
-        console.log("Checking you out");
-      }
-      else{
-        console.log("Not checking you out");
-      }
-      //alert("Item was added to your cart")
-
-    }
-    else{
-      alert("Item was not added to your cart");
-    }*/
   }
-
-
-
 
    getAllProductDetails(){
 
@@ -98,23 +75,24 @@ export class ProductDetailsComponent implements OnInit {
     console.log(param);
 
     this.data.getProductInfoByName(param).subscribe(
-      data => {
+      data => { 
+        
         this.temp$ = data;
         this.item$ = data[0];
         this.productName = this.item$.productName;
         this.quantity= this.item$.quantity;
+        this.productId = this.item$.id;
+        console.log(this.item$);
         this.price = this.item$.price;
         this.productDesc = this.item$.productDesc;
         this.img1 = this.item$.image;
         this.img2 = this.item$.image2;
         this.img3 = this.item$.image3;
-
+        
         this.getQuantity();
       });
 
-
    }
-
 
   ngOnInit() {
 

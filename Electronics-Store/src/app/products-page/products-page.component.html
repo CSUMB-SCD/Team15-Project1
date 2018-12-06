@@ -29,7 +29,6 @@
         </td>
         <td>${{product.price | number:"0.2"}}</td>
         <td>{{product.quantity}}</td>
-        <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
         <td>
           <button class=addBtn type="submit" (click)="addToCart(product)">
           <i class="material-icons">add_shopping_cart</i>
@@ -42,14 +41,7 @@
         <div id="id_continuediv"> Would you like to checkout or continue shopping?
           <button id="truebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Checkout</button>
           <button id="falsebtn2">Continue Shopping</button>
-        </div>
-<!-- <button (click)="addToCart()">Add</button> -->
-
-        <!-- <div>
-            <button type ="submit" routerLink='/checkout'>CHECKOUT</button>
-        </div>       -->
-          <!-- <button type ="submit" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">CHECKOUT</button> -->
-    </tr>
+        </div> </tr>
   </table>
 
 </div>

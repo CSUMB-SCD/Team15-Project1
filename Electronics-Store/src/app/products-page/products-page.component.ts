@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductsPageComponent implements OnInit {
 
   items$: Object;
-
+  idk$: Object;
   login_message;
   private products = [];
   private infoForProducts = [];
@@ -25,28 +25,32 @@ export class ProductsPageComponent implements OnInit {
   productDesc:string = '';
   found:boolean;
   name:string ='';
+  productId:string;
+
 
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}
 
   addToCart(addedProducts) {
-    // this.addedProducts = addedProducts;
-    // console.log(this.addedProducts);
 
-    this.data.checkoutCart.push(addedProducts);
-    console.log(this.data.checkoutCart);
+    this.productId = addedProducts.id;
+    this.price = addedProducts.price;
+    this.quantity = addedProducts.quantity;
+    this.productName = addedProducts.productName;
+
+    this.data.addToCart(this.productId, this.price, 1, this.quantity, this.productName);
+
+    document.getElementById('id_confrmdiv').style.display = 'block';
 
      //this is the replace of this line
      document.getElementById('id_confrmdiv').style.display = 'block';
 
     document.getElementById('id_truebtn').onclick = function() {
-       // do your delete operation
-       //var checkout = window.confirm('Would you like to checkout or continue shopping?');
-       document.getElementById('id_confrmdiv').style.display = 'none';
-       document.getElementById('id_continuediv').style.display = 'block';
-       document.getElementById('truebtn2').onclick = function() {
-         document.getElementById('id_continuediv').style.display = 'none';
-       };
+      document.getElementById('id_confrmdiv').style.display = 'none';
+      document.getElementById('id_continuediv').style.display = 'block';
+      document.getElementById('truebtn2').onclick = function() {
+        document.getElementById('id_continuediv').style.display = 'none';
+      };
        document.getElementById('falsebtn2').onclick = function() {
          document.getElementById('id_continuediv').style.display = 'none';
        };
@@ -55,7 +59,6 @@ export class ProductsPageComponent implements OnInit {
     document.getElementById('id_falsebtn').onclick = function() {
       console.log('Not checking you out');
       document.getElementById('id_confrmdiv').style.display = 'none';
-
        return false;
     };
   }
@@ -63,8 +66,10 @@ export class ProductsPageComponent implements OnInit {
 
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
-      data => this.items$ = data
-      );
+      data => {
+         this.items$ = data;
+      
+      });
   }
 
   ngOnInit() {
