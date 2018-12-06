@@ -7,7 +7,13 @@
   <button id="Prodfalsebtn2">Continue Shopping</button>
 </div>
 <div *ngIf="login_message != 'no'">
-  <button class="button_right" button #submit (click)="signOut()">
+  <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+  margin-right: 30px;
+  position:absolute;
+  top:0;
+  border: none;
+  right:0;"
+  button #submit (click)="signOut()">
       <p class="buttonText">Sign Out</p>
   </button>
 </div>
