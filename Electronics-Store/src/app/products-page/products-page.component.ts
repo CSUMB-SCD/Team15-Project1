@@ -49,7 +49,6 @@ export class ProductsPageComponent implements OnInit {
       document.getElementById('id_confrmdiv').style.display = 'none';
       document.getElementById('id_continuediv').style.display = 'block';
       document.getElementById('truebtn2').onclick = function() {
-        document.getElementById('id_continuediv').style.display = 'none';
       };
        document.getElementById('falsebtn2').onclick = function() {
          document.getElementById('id_continuediv').style.display = 'none';
@@ -68,7 +67,7 @@ export class ProductsPageComponent implements OnInit {
     this.data.getAllProductInfo().subscribe(
       data => {
          this.items$ = data;
-      
+
       });
   }
 
