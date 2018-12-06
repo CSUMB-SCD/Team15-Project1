@@ -24,11 +24,11 @@
         <td>{{product.quantity}}</td>
         <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
         <td>
-          <button class=addBtn type="submit" (click)="addToCart(product)">Add to Cart</button>
+          <button class=addBtn type="submit" (click)="addToCart(product)">
+          <i class="material-icons">add_shopping_cart</i>
+        </button>
         </td>
-          <!--<button class=addBtn type="submit" (click)="addToCart(product)">Add</button>-->
-          <!-- Dialog -->
-        <div id="id_confrmdiv"> Would you like to add this item to your cart? <br>
+          <div id="id_confrmdiv"> Would you like to add this item to your cart? <br>
           <button id="id_truebtn">Yes</button>
           <button id="id_falsebtn">No</button>
         </div>

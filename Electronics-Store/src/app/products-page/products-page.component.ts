@@ -61,7 +61,8 @@ export class ProductsPageComponent implements OnInit {
     this.data.checkoutCart.push(addedProducts)
     console.log(this.data.checkoutCart)
 
-    c //this is the replace of this line
+     //this is the replace of this line
+     document.getElementById('id_confrmdiv').style.display = 'block';
 
     document.getElementById('id_truebtn').onclick = function() {
        // do your delete operation

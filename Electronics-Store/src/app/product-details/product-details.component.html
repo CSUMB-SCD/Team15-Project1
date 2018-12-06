@@ -11,9 +11,13 @@
       <p class="buttonText">Sign Out</p>
   </button>
 </div>
-
-<h1 class=pdetails>Electronic Details</h1>
-<h2>Product Name: </h2> <h3 class =pName><strong>{{productName}}</strong></h3>
+<h1 class="center">
+  <strong>{{productName}}</strong>
+</h1>
+<hr>
+<br>
+<br>
+<!-- <h1 class =pName><strong>{{productName}}</strong></h1> -->
 <div class= "centerDiv"style="">
   <div class="row" sytle="display: flex;">
     <div class="carousel-w" >
@@ -33,7 +37,7 @@
       </ngb-carousel>
     </div>
     <!-- <div class = pDiscription> -->
-      <div class = "col-6" style="flex:1px;">
+      <div class = "col-6" style="flex:1px; width:35%;">
         <h3> Description: </h3> <p>{{productDesc}}</p>
         <div class=".col-md-4" style="display: flex;flex: 1px;">
             <h3 class=price type="text" style="display:inline;" >Price:$</h3> <h3 style="display:inline; color: red;" >{{price | number:"0.2"}}</h3>
