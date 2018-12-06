@@ -67,6 +67,7 @@ select {
     padding: 6px 8px 8px;
     box-sizing: border-box;
     text-align: center;
+    z-index: 1;
 }
 #prod_continuediv
 {
@@ -81,9 +82,10 @@ select {
     padding: 6px 8px 8px;
     box-sizing: border-box;
     text-align: center;
+    z-index: 1;
 }
 #prod_confrmdiv button {
-    background-color: lightblue;
+    background-color: #8FD8D2;
     display: inline-block;
     border-radius: 3px;
     border: 1px solid #aaa;
@@ -93,7 +95,7 @@ select {
     cursor: pointer;
 }
 #prod_continuediv button {
-  background-color: lightblue;
+  background-color: #8FD8D2;
   display: inline-block;
   border-radius: 3px;
   border: 1px solid #aaa;
@@ -122,9 +124,13 @@ select {
 }
 #prod_truebtn {
   margin: 5%;
+  background-color: #8FD8D2;
+
 }
 #Prodtruebtn2{
   margin: 5%;
+  background-color: #8FD8D2;
+
 
 }
 .centerDiv{

@@ -18,6 +18,7 @@
   </div>
 
 
+
 <div *ngIf="login_message != 'no'">
   <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
   margin-right: 30px;
@@ -38,23 +39,23 @@
     <th>Quantity</th>
     <th>Edit Quantity</th>
   </tr>
-  
-  <tr *ngFor="let productId of checkout; let i = index"> 
+  <br>
+  <tr *ngFor="let productId of checkout; let i = index">
 
     <td>{{testData[i][2]}}</td>
-    <td>{{testData[i][0]}}</td>
+    <td>${{testData[i][0]}}</td>
     <td>{{testData[i][1]}}</td>
       <!-- <td> {{display.productName}}</td>
       <td>{{display.price }}</td> -->
 
     <!-- <select [(ngModel)]="selectedValue" (ngModelChange)="tmp($event)" class =sel style="display:inline">
         <option *ngFor="let option of options">{{option}}</option>
-  
+
     </select> -->
 
     <select class =sel style="display:inline">
       <option *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
-        {{option}} 
+        {{option}}
       </option>
     </select>
 
