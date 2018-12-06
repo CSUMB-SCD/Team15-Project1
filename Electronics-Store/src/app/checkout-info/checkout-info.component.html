@@ -17,11 +17,12 @@
       <hr>
   </div>
 
-<div *ngIf="login_message == 'yes'">
+<div *ngIf="login_message == 'yes'" class = "f-edit">
 <h3 style="text-align:center;"><strong>Checkout</strong></h3>
+<hr>
 <br>
 <div>
-    <div >
+    <div>
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="firstName">Name</label>
