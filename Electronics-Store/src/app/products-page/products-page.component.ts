@@ -29,37 +29,12 @@ export class ProductsPageComponent implements OnInit {
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}
 
-  // //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
-  // addToCart(addedProducts){
-  //   this.data.checkoutCart.push(addedProducts)
-  //   console.log(this.data.checkoutCart)
-  //   //this.temp = JSON.stringify(addedProducts);
-  //   //console.log(this.temp);
-
-
-  //   var confirm = window.confirm("Proceeding to add to cart...");
-  //   if(confirm==true){
-  //     var checkout = window.confirm("Would you like to checkout or continue shopping?")
-  //     if(checkout == true){
-  //       checkout=true;
-  //       console.log("Checking you out")
-  //     }
-  //     else{
-  //       console.log("Not checking you out")
-  //     }
-  //     //alert("Item was added to your cart")
-
-  //   }
-  //   else{
-  //     alert("Item was not added to your cart");
-  //   }
-  // }
   addToCart(addedProducts) {
     // this.addedProducts = addedProducts;
     // console.log(this.addedProducts);
 
-    this.data.checkoutCart.push(addedProducts)
-    console.log(this.data.checkoutCart)
+    this.data.checkoutCart.push(addedProducts);
+    console.log(this.data.checkoutCart);
 
      //this is the replace of this line
      document.getElementById('id_confrmdiv').style.display = 'block';
@@ -75,13 +50,12 @@ export class ProductsPageComponent implements OnInit {
        document.getElementById('falsebtn2').onclick = function() {
          document.getElementById('id_continuediv').style.display = 'none';
        };
-        //alert('true');
     };
 
     document.getElementById('id_falsebtn').onclick = function() {
       console.log('Not checking you out');
       document.getElementById('id_confrmdiv').style.display = 'none';
-         //alert('false');
+
        return false;
     };
   }

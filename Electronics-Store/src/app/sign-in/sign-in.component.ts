@@ -66,7 +66,7 @@ export class SignInComponent implements OnInit {
   }
 
   newMessage(changeStatus) {
-    this.data.changeMessage(changeStatus)
+    this.data.changeMessage(changeStatus);
   }
   signOut() {
     this.login_message = 'no';

@@ -39,7 +39,7 @@ select {
 .addToCart{
   background-color:#8FD8D2;
   border: none;
-  color:solid white;
+  color:white;
   padding: 9px 19px;
   text-align:center;
   text-decoration:none;
@@ -129,6 +129,6 @@ select {
 }
 .centerDiv{
   margin: auto;
-  width: 60%;
-  padding: 10px;
+  width: inherit;
+  padding: inherit;
 }
