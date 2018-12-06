@@ -18,6 +18,14 @@ h1.heading{
   color: inherit;
   //border:dashed;
 }
+tr:hover{
+  background-color: #8FD8D2;
+
+  i:hover{
+    background-color: white;
+  }
+}
+
 body { font-family: sans-serif; }
 #id_confrmdiv
 {

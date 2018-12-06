@@ -45,26 +45,32 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart() {
 
+    // let succeeded = false;
     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
 
-     document.getElementById('prod_confrmdiv').style.display = 'block';
-     document.getElementById('prod_truebtn').onclick = function() {
+    //  document.getElementById('prod_confrmdiv').style.display = 'block';
+    //  document.getElementById('prod_truebtn').onclick = function() {
       // do your delete operation
+      // document.getElementById('prod_confrmdiv').style.display = 'none';
 
-      document.getElementById('prod_confrmdiv').style.display = 'none';
       document.getElementById('prod_continuediv').style.display = 'block';
       document.getElementById('Prodtruebtn2').onclick = function() {
       };
       document.getElementById('Prodfalsebtn2').onclick = function() {
         document.getElementById('prod_continuediv').style.display = 'none';
       };
-   };
+      // succeeded = true;
 
-   document.getElementById('prod_falsebtn').onclick = function() {
-     console.log('Not checking you out');
-     document.getElementById('prod_confrmdiv').style.display = 'none';
-      return false;
-   };
+   //};
+
+  //  if(succeeded){
+  //   this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
+  //  }
+  //  document.getElementById('prod_falsebtn').onclick = function() {
+  //    console.log('Not checking you out');
+  //    document.getElementById('prod_confrmdiv').style.display = 'none';
+  //     return false;
+  //  };
 
   }
 

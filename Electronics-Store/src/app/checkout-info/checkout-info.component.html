@@ -1,30 +1,35 @@
-<h3 style="text-align:center;">Checkout</h3>
+<div *ngIf="login_message != 'yes'">
+    <h1>Please sign-in to make a purchase.</h1>
+    <ul>
+        <li>
+          <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+          margin-right: 30px;
+          position:absolute;
+          top:0;
+          border: none;
+          right:0;
+          color: white;" routerLink="../sign-in">
+                <p class="buttonText">Go to Sign In</p>
+              </button>
+        </li>
+      </ul>
+      <br><br>
+      <hr>
+  </div>
+
+<div *ngIf="login_message == 'yes'">
+<h3 style="text-align:center;"><strong>Checkout</strong></h3>
 <br>
 <div>
     <div >
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName">Name</label>
                 <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
                 <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                    <div *ngIf="firstName.errors.required">Name is required</div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
-                <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-                    <div *ngIf="lastName.errors.required">Last Name is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required/>
-                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                    <div *ngIf="email.errors.required">Email is required</div>
-                </div>
-            </div>
-            <h3><strong>Address</strong></h3>
             <div class="form-group">
               <label for="address">Street</label>
               <input type="text" class="form-control" name="address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
@@ -47,10 +52,24 @@
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="zip">Zip</label>
+                    <label for="zip">Zip Code</label>
                     <input type="number" class="form-control" name="zip" [(ngModel)]="model.zip" #zip="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zip.invalid }" required/>
                     <div *ngIf="f.submitted && zip.invalid" class="invalid-feedback">
                         <div *ngIf="zip.errors.required">Zip is required</div>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label for="card">Card Number</label>
+                    <input type="number" class="form-control" name="card" [(ngModel)]="model.card" #card="ngModel" [ngClass]="{ 'is-invalid': f.submitted && card.invalid }" required/>
+                    <div *ngIf="f.submitted && card.invalid" class="invalid-feedback">
+                        <div *ngIf="card.errors.required">Card number is required</div>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label for="pin">Security Pin</label>
+                    <input type="number" class="form-control" name="pin" [(ngModel)]="model.pin" #pin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pin.invalid }" required/>
+                    <div *ngIf="f.submitted && pin.invalid" class="invalid-feedback">
+                        <div *ngIf="pin.errors.required">Security pin is required</div>
                     </div>
                   </div>
             <div class="form-group">
@@ -61,4 +80,4 @@
         </form>
     </div>
 </div>
-
+</div>

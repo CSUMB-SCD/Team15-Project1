@@ -43,10 +43,10 @@
 </div>
 <div class= "d-flex align-items-start">
 <div class= "search" style= "width: 20%;"*ngFor="let item of items$" >
-  <span *ngIf="login_message != 'yes'">{{item.productName}}</span> <br>
-  <span *ngIf="login_message != 'no'"><a [routerLink]="['/product-details']" [queryParams]="{ productName: item.productName }">{{item.productName}}<br></a></span>
-  <span>${{item.price}}</span> <br>
-  <span>{{item.productDesc}}</span>
+  <span *ngIf="login_message != 'yes'"><strong>Product: </strong>{{item.productName}}</span> <br>
+  <span *ngIf="login_message != 'no'"><a [routerLink]="['/product-details']" [queryParams]="{ productName: item.productName }">Product: {{item.productName}}<br></a></span>
+  <span><strong>Price: </strong>${{item.price}}</span> <br>
+  <span><strong>Description: </strong>{{item.productDesc}}</span>
 </div>
 </div>
 
