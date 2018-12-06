@@ -9,6 +9,9 @@ import { DataService } from '../data.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  login_message;
+  model: any = {};
+
   test$;
   private selectedValues:string[] = [];
   private checkout = {};
@@ -21,7 +24,8 @@ export class CheckoutComponent implements OnInit {
   private testData = [];
   price:number;
 
-  constructor(private route: ActivatedRoute, private data: DataService) { 
+
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) { 
   
     console.log(this.data.checkoutCart); 
     this.checkout = Object.keys(data.checkoutCart);
@@ -34,9 +38,10 @@ export class CheckoutComponent implements OnInit {
     
     console.log(this.price);
     this.selectedValues.length = Object.keys(this.checkout).length;
-
-
-    //let product = this.checkout[i];
+    
+    for(let i = 0; i < this.selectedValues.length; i++) {
+        this.selectedValues[i] = this.testData[i].quantity;
+    }
     this.total = data.getTotalPrice();
   }
 
@@ -53,58 +58,20 @@ export class CheckoutComponent implements OnInit {
     return testArray;
   }
 
-
-
-
-  // range:string[] = length => {
-  //   var testArray:string[];
-  //   for(let i = 0; i <length; i++){
-  //     testArray.push(String(i));
-  //   }
-  //   return testArray;
-  // }
-
-  // range(value){
-  //   testArray = [];
-  //   this.testArray.length = value;
-  //   for(let i of this.checkout){
-  //     this.testArray.push(i);
-  //   }
-  //   return this.testArray;
-  // }
-
-
-  // getQuantityForAllProducts(){
-  //   this.quantity="";
-
-  //   console.log("what is being called")
-  //   console.log(this.checkout);
-  //   for(let i=0;i<this.selectedValues.length;i++){
-  //      if(this.checkout[i].productName == this.checkout[i].productName){
-  //       console.log(this.data.checkoutCart[i]);
-  //       console.log(this.checkout[i].quantity);
-  //       this.quantity = this.checkout[i].quantity;
-  //       this.getQuantity(this.quantity);
-  //       break;
-  //     }
-  //   }
-  // }
-
-  // getQuantity(amountAvail){
-  //   //this.options.pop();
-  //   //console.log(this.options);
-  //   this.quantityAmt = Number(amountAvail);
-  //   for(let i=0;i<=this.quantityAmt;i++){
-  //     this.options.push(String(i));
-  //   }
-  //   console.log(this.options);
-  // }
-
-  
-
-  ngOnInit() {
-    //this.getQuantityForAllProducts();
-    
+  signOut() {
+    this.login_message = 'no';
+    this.data.changeMessage('no');
+    window.location.reload();
+    this.router.navigate(['../home']);
   }
 
+  confirmPurchase() {
+    this.router.navigate(['../checkout-info']);
+  }
+
+  ngOnInit() {
+    this.data.currentStatus.subscribe(message => this.login_message = message);
+
+  }
+  
 }

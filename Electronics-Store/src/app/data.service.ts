@@ -21,12 +21,12 @@ export class DataService {
 
   addToCart(productId, price, singleQuantity, dbQuantity, productName){
     this.quantity = dbQuantity;
-
+    console.log(productId);
     if (productId in this.checkoutCart) {
       this.checkoutCart[productId][1] += singleQuantity;
-      this.checkoutCart[productId][0] += price;
+      this.checkoutCart[productId][0] += (price * singleQuantity);
     } else {
-      this.checkoutCart[productId] = [price, singleQuantity, productName, dbQuantity];
+      this.checkoutCart[productId] = [price * singleQuantity, singleQuantity, productName, dbQuantity];
       console.log(this.checkoutCart[productId]);
     }
 
@@ -36,7 +36,7 @@ export class DataService {
     this.total=0;
     for(let key in this.checkoutCart) {
       let pair = this.checkoutCart[key];
-      this.total += pair[0] * pair[1];
+      this.total += pair[0];
     }
     return this.total;
   }

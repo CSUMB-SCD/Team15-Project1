@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   item$
   test:number;
   temp:string;
-  quantityAmt:number;
+  quantityAmt:number = 1;
   private addedProducts = [];
   selectedValue: string;
   private options = [];
@@ -27,9 +27,10 @@ export class ProductDetailsComponent implements OnInit {
   img3:string;
   productId:string;
 
+  login_message;
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
-   }
+
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) { }
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
@@ -37,40 +38,36 @@ export class ProductDetailsComponent implements OnInit {
    }
 
    getQuantity(){
-    this.quantityAmt = Number(this.quantity);
-    for(let i=1;i<=this.quantityAmt;i++){
+    for(let i=1;i<=Number(this.quantity);i++) {
       this.options.push(String(i));
       }
    }
 
-   addToCart(){
-    // for(let i=0;i<this.quantityAmt;i++){
-    //   this.data.checkoutCart[this.productId]=[this.price,this.quantityAmt];
-    // }
-     //console.log(this.data.checkoutCart);
-    
-     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName,);
+  addToCart() {
 
-    var confirm = window.confirm("Proceeding to add to cart...");
-    if(confirm==true){
-      var checkout = window.confirm("Would you like to checkout or continue shopping?")
-      if(checkout == true){
-        checkout=true;
-        console.log("Checking you out");
-      }
-      else{
-        console.log("Not checking you out");
-      }
-      //alert("Item was added to your cart")
+    this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
+
+     document.getElementById('prod_confrmdiv').style.display = 'block';
+     document.getElementById('prod_truebtn').onclick = function() {
+      // do your delete operation
       
-    }
-    else{
-      alert("Item was not added to your cart");
-    }
+      document.getElementById('prod_confrmdiv').style.display = 'none';
+      document.getElementById('prod_continuediv').style.display = 'block';
+      document.getElementById('Prodtruebtn2').onclick = function() {
+        document.getElementById('prod_continuediv').style.display = 'none';
+      };
+      document.getElementById('Prodfalsebtn2').onclick = function() {
+        document.getElementById('prod_continuediv').style.display = 'none';
+      };
+   };
+
+   document.getElementById('prod_falsebtn').onclick = function() {
+     console.log('Not checking you out');
+     document.getElementById('prod_confrmdiv').style.display = 'none';
+      return false;
+   };
+
   }
-
-
-
 
    getAllProductDetails(){
 
@@ -84,7 +81,8 @@ export class ProductDetailsComponent implements OnInit {
         this.item$ = data[0];
         this.productName = this.item$.productName;
         this.quantity= this.item$.quantity;
-        this.productId = this.item$.productId;
+        this.productId = this.item$.id;
+        console.log(this.item$);
         this.price = this.item$.price;
         this.productDesc = this.item$.productDesc;
         this.img1 = this.item$.image;
@@ -94,13 +92,20 @@ export class ProductDetailsComponent implements OnInit {
         this.getQuantity();
       });
 
-      
    }
-
 
   ngOnInit() {
 
     this.getAllProductDetails();
+    this.data.currentStatus.subscribe(message => this.login_message = message);
+
   }
+
+  signOut() {
+    this.login_message = 'no';
+    this.data.changeMessage('no');
+    window.location.reload();
+    this.router.navigate(['../home']);
+}
 
 }

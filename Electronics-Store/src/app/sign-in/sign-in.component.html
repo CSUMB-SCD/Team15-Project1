@@ -19,6 +19,13 @@
         </div>
             <br>
             <div class="form-group">
+              <ngx-spinner
+                bdColor="rgba(51,51,51,0.8)"
+                size="medium"
+                color="#fff"
+                type="ball-scale-multiple">
+              <p style="font-size: 20px; color: white">Signing in...</p>
+            </ngx-spinner>
                 <button class="btn btn-primary" button #submit (click)="onSubmit(username.value, password.value)">
                     Sign In
                   </button>
@@ -32,7 +39,7 @@
 
 <div *ngIf="login_message == 'yes'">
 
-  <h1 style="text-align: center;">You are now signed in, {{ user.username }}</h1>
+  <h1 style="text-align: center;"> You are now signed in </h1>
   <br>
 
   <button class="button" style="width: 200px" routerLink="../products-page">
@@ -48,3 +55,9 @@
   <br><br>
   <hr>
 </div>
+
+
+<footer>
+    <hr>
+    CST438. 2018 &copy; Manjit Gurcha. Raeleen Watson. Irais Gopar <br />
+</footer>
