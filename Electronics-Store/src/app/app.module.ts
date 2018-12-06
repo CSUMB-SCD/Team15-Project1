@@ -14,6 +14,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from './data.service';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CheckoutInfoComponent } from './checkout-info/checkout-info.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ProductDetailsComponent,
     ProductsPageComponent,
     SignInComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    CheckoutInfoComponent
   ],
   imports: [
     BrowserModule,

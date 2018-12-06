@@ -24,4 +24,8 @@ export class ThankYouComponent implements OnInit {
     this.router.navigate(['../home']);
 }
 
+continueShopping() {
+  this.router.navigate(['../products-page']);
+}
+
 }
