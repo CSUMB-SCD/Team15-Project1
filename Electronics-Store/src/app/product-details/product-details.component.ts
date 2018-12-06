@@ -54,7 +54,6 @@ export class ProductDetailsComponent implements OnInit {
       document.getElementById('prod_confrmdiv').style.display = 'none';
       document.getElementById('prod_continuediv').style.display = 'block';
       document.getElementById('Prodtruebtn2').onclick = function() {
-        document.getElementById('prod_continuediv').style.display = 'none';
       };
       document.getElementById('Prodfalsebtn2').onclick = function() {
         document.getElementById('prod_continuediv').style.display = 'none';
