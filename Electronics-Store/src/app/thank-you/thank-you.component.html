@@ -12,13 +12,21 @@
 <br><br>
 <div>
   <br>
-  <button class="button_center" (click)="continueShopping()">
+  <button class="btn btn-primary"
+                style="background: #8FD8D2;
+                border: none;
+                text-align:center"
+                (click)="continueShopping()">
     <p class="buttonText">Continue Shopping</p>
   </button>
 </div>
 <br>
   <div *ngIf="login_message != 'no'">
-      <button class="button_center" button #submit (click)="signOut()">
+    <button class="btn btn-primary"
+    style="background: #8FD8D2;
+    border: none;
+    text-align:center"
+    button #submit (click)="signOut()">
           <p class="buttonText">Sign Out</p>
       </button>
   </div>

@@ -17,5 +17,5 @@ export class CheckoutInfoComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(['../thank-you']);
-  }
+  } 
 }

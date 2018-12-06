@@ -3,7 +3,13 @@
 <h1 class= center> Electronics Available</h1>
 <hr>
    <div *ngIf="login_message != 'no'">
-      <button class="button_right" button #submit (click)="signOut()">
+    <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+    margin-right: 30px;
+    position:absolute;
+    top:0;
+    border: none;
+    right:0;"
+    button #submit (click)="signOut()">
           <p class="buttonText">Sign Out</p>
         </button>
     <table class="table1">
@@ -23,7 +29,6 @@
         </td>
         <td>${{product.price | number:"0.2"}}</td>
         <td>{{product.quantity}}</td>
-        <!-- FIX PROMPT SO IT SAYS YES OR NO? -->
         <td>
           <button class=addBtn type="submit" (click)="addToCart(product)">
           <i class="material-icons">add_shopping_cart</i>
@@ -36,14 +41,7 @@
         <div id="id_continuediv"> Would you like to checkout or continue shopping?
           <button id="truebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Checkout</button>
           <button id="falsebtn2">Continue Shopping</button>
-        </div>
-<!-- <button (click)="addToCart()">Add</button> -->
-
-        <!-- <div>
-            <button type ="submit" routerLink='/checkout'>CHECKOUT</button>
-        </div>       -->
-          <!-- <button type ="submit" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">CHECKOUT</button> -->
-    </tr>
+        </div> </tr>
   </table>
 
 </div>
@@ -52,7 +50,10 @@
     <h1>Please Sign In to Browse</h1>
     <ul>
         <li>
-            <button class="button" style="width: 200px" routerLink="../sign-in">
+          <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+          width:200px;
+          border: none;"
+          routerLink="../sign-in">
                 <p class="buttonText">Go to Sign In</p>
               </button>
         </li>
