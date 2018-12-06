@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
+//import * as angular from "angular";
 
 @Component({
   selector: 'app-sidebar',
