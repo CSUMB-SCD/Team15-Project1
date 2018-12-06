@@ -62,20 +62,28 @@
   </tr>
 </table>
 
-<h3>Total: ${{ total | number:"0.2" }}</h3>
+<div class="container" style="position:fixed;bottom: 0">
+  <div class = "row">
+    <div class= "col-sm">
+      <h3 class = "totalFix" style="display: inline-block;">Total: ${{ total | number:"0.2" }}</h3>
+    </div>
+    <div class = "col-sm" style="display: inline-block;">
+        <button class="btn btn-primary" type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
+      </div>
+  </div>
+</div>
 
-<div class = "row">
-  <button class="btn btn-primary" style="background: #8FD8D2;padding: 9px 12px;
+
+</div>
+<!-- "background: #8FD8D2;padding: 9px 12px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 13px;
-  position: absolute;
+  position: fixed;
+  margin-bottom:0px;
   bottom: 10px;
   border: none;
   width: 15%;
-  color: white;" type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
-</div>
-</div>
-
+  color: white;" -->
 
