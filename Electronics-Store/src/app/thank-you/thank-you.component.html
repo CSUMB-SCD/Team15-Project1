@@ -1,32 +1,31 @@
-<div *ngIf="login_message != 'no'">
-  <button class="button_right" button #submit (click)="signOut()">
+<body>
+<!-- <div *ngIf="login_message != 'no'">
+  <button class="button_center" button #submit (click)="signOut()">
       <p class="buttonText">Sign Out</p>
   </button>
+</div> -->
+<br><br>
+<h1><strong>Thank You for Shopping With Us!</strong></h1>
+<p>Your order will be shipped to you within 3 to 5 business days.</p>
+
+
+<br><br>
+<div>
+  <br>
+  <button class="button_center" (click)="continueShopping()">
+    <p class="buttonText">Continue Shopping</p>
+  </button>
 </div>
-<h1 class= heading>Reciept</h1>
-<body>
-  <table class="table1">
-    <tr>
-      <th>Amount</th>
-      <th>Product Name</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-  </table>
-  <div class = "Final">
-      <h3 class=amt type="text" style="display:inline">Total Items: </h3>
-      <h3 class=price type="text" style="display:inline-block">Total Price:$</h3>
+<br>
+  <div *ngIf="login_message != 'no'">
+      <button class="button_center" button #submit (click)="signOut()">
+          <p class="buttonText">Sign Out</p>
+      </button>
   </div>
-  <!--<div class = "thanks">-->
-    <h1 class=ThankYou><strong>Thank You for Shoping With Us!</strong></h1>
-  <!--</div>-->
 </body>
+
+
+<footer>
+    <hr>
+    CST438. 2018 &copy; Manjit Gurcha. Raeleen Watson. Irais Gopar <br />
+</footer>

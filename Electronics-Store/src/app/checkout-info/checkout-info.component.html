@@ -1,0 +1,62 @@
+<h3 style="text-align:center;">Checkout</h3>
+<br>
+<div>
+    <div >
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label> 
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+                <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                    <div *ngIf="lastName.errors.required">Last Name is required</div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required/>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <h3><strong>Address</strong></h3>
+            <div class="form-group">
+              <label for="address">Street</label>
+              <input type="text" class="form-control" name="address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required />
+              <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                  <div *ngIf="address.errors.required">Street is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required />
+                <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+                    <div *ngIf="city.errors.required">City is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="state">State</label>
+                  <input type="text" class="form-control" name="state" [(ngModel)]="model.state" #state="ngModel" [ngClass]="{ 'is-invalid': f.submitted && state.invalid }" required />
+                  <div *ngIf="f.submitted && state.invalid" class="invalid-feedback">
+                      <div *ngIf="state.errors.required">State is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="zip">Zip</label>
+                    <input type="number" class="form-control" name="zip" [(ngModel)]="model.zip" #zip="ngModel" [ngClass]="{ 'is-invalid': f.submitted && zip.invalid }" required/>
+                    <div *ngIf="f.submitted && zip.invalid" class="invalid-feedback">
+                        <div *ngIf="zip.errors.required">Zip is required</div>
+                    </div>
+                  </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

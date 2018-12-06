@@ -13,6 +13,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from './data.service';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CheckoutInfoComponent } from './checkout-info/checkout-info.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,16 @@ import { FormsModule } from '@angular/forms';
     ProductDetailsComponent,
     ProductsPageComponent,
     SignInComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    CheckoutInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

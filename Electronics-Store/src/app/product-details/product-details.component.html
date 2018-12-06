@@ -33,7 +33,7 @@
 
 <h3> Description: </h3> <p>{{productDesc}}</p> <br>
 
-  <h4 class=price type="text" style="display:inline-block">Price:</h4> {{price | number:"0.2"}}
+  <h4 class=price type="text" style="display:inline-block">Price:</h4> ${{price | number:"0.2"}}
   <h4 class=amt type="text" style="display:inline">Amount in stock: </h4> {{quantity}}
   <br/>
   <h4 style="display:inline">Quantity: </h4>
@@ -43,4 +43,11 @@
   </select>
   <button class=addToCart type="submit" (click)="addToCart()">Add to Cart</button>
   <BR CLEAR="left"/>
+
+
+<footer>
+    <hr>
+    CST438. 2018 &copy; Manjit Gurcha. Raeleen Watson. Irais Gopar <br />
+</footer>
+
 

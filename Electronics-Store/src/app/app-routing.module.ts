@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import {CheckoutInfoComponent } from './checkout-info/checkout-info.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'checkout-info',
+    component: CheckoutInfoComponent
   },
 ];
 

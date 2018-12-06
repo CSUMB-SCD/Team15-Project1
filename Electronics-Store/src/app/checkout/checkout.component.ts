@@ -13,6 +13,7 @@ export class CheckoutComponent implements OnInit {
   total:number = 0;
   temp:string;
   login_message;
+  model: any = {};
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
     this.checkout = data.checkoutCart;
@@ -33,4 +34,7 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(['../home']);
 }
 
+  confirmPurchase() {
+    this.router.navigate(['../checkout-info']);
+  }
 }

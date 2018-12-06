@@ -1,3 +1,4 @@
+<body>
 <div *ngIf="login_message != 'yes'">
     <h1>Please Sign In To View Your Cart.</h1>
     <ul>
@@ -27,15 +28,16 @@
   <tr *ngFor="let display of checkout">
     <td>{{display.productName}}</td>
     <td>{{display.quantity}}</td>
-    <td>{{display.price }}</td>
+    <td>${{display.price }}</td>
   </tr>
 </table>
 
-<h3>Total: {{ total | number:"0.2" }}</h3>
+<h3>Total: ${{ total | number:"0.2" }}</h3>
 
 <div class = "row">
-  <button class=addBtn type="submit">Confirm Purchase</button>
+  <button class=addBtn type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
 </div>
 </div>
 
+</body>
 
