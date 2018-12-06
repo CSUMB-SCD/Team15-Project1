@@ -50,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
      document.getElementById('prod_confrmdiv').style.display = 'block';
      document.getElementById('prod_truebtn').onclick = function() {
       // do your delete operation
-      
+
       document.getElementById('prod_confrmdiv').style.display = 'none';
       document.getElementById('prod_continuediv').style.display = 'block';
       document.getElementById('Prodtruebtn2').onclick = function() {
@@ -75,8 +75,8 @@ export class ProductDetailsComponent implements OnInit {
     console.log(param);
 
     this.data.getProductInfoByName(param).subscribe(
-      data => { 
-        
+      data => {
+
         this.temp$ = data;
         this.item$ = data[0];
         this.productName = this.item$.productName;
@@ -88,7 +88,7 @@ export class ProductDetailsComponent implements OnInit {
         this.img1 = this.item$.image;
         this.img2 = this.item$.image2;
         this.img3 = this.item$.image3;
-        
+
         this.getQuantity();
       });
 
