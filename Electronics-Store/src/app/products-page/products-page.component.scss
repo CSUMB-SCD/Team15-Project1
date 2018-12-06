@@ -4,7 +4,7 @@ h1.heading{
 .addBtn {
   background-color: #8FD8D2;
   border: none;
-  color: white;
+  color: solid white;
   padding: 9px 12px;
   text-align: center;
   text-decoration: none;
@@ -22,7 +22,7 @@ body { font-family: sans-serif; }
 #id_confrmdiv
 {
     display: none;
-    background-color: white;
+    background-color:white;
     border-radius: 5px;
     border: 2px solid black;
     position: fixed;
@@ -58,7 +58,7 @@ body { font-family: sans-serif; }
     cursor: pointer;
 }
 #id_continuediv button {
-  background-color: lightblue;
+  background-color:lightblue;
   display: inline-block;
   border-radius: 3px;
   border: 1px solid #aaa;
@@ -69,11 +69,11 @@ body { font-family: sans-serif; }
 }
 #id_confrmdiv .button:hover
 {
-    background-color: #ddd;
+    background-color:lightblue;
 }
 #id_continuediv .button:hover
 {
-    background-color: #ddd;
+    background-color:lightblue;
 }
 #confirmBox .message
 {
@@ -87,10 +87,11 @@ body { font-family: sans-serif; }
 }
 #id_truebtn {
   margin: 5%;
+  background-color: lightblue;
 }
 #truebtn2{
   margin: 5%;
-
+  background-color: lightblue;
 }
 
 // .row {
