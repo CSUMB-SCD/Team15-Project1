@@ -15,6 +15,7 @@ export class ThankYouComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.currentStatus.subscribe(message => this.login_message = message);
   }
 
   signOut() {
@@ -25,7 +26,8 @@ export class ThankYouComponent implements OnInit {
 }
 
 continueShopping() {
+  // this.login_message = 'yes';
+  // this.data.changeMessage('yes');
   this.router.navigate(['../products-page']);
 }
-
 }

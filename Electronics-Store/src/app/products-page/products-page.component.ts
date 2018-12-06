@@ -42,6 +42,9 @@ export class ProductsPageComponent implements OnInit {
 
     document.getElementById('id_confrmdiv').style.display = 'block';
 
+     //this is the replace of this line
+     document.getElementById('id_confrmdiv').style.display = 'block';
+
     document.getElementById('id_truebtn').onclick = function() {
       document.getElementById('id_confrmdiv').style.display = 'none';
       document.getElementById('id_continuediv').style.display = 'block';

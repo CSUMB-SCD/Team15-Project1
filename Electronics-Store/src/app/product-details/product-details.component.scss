@@ -1,18 +1,20 @@
 h1.pdetails{
   text-align: center;
+  position: relative;
+}
+.container{
+  text-align: center;
 }
 h3.price {
-  display: inline; /* the default for span */
+ //'display: inline; /* the default for span */
 }
 h3.amt {
-  display: inline; /* the default for span */
-  margin-left: 20px;
+ // display: inline; /* the default for span */
+  margin-left: 10px;
 }
-* {
-  //margin: 0;
-  padding: 0;
-  text-decoration: none;
-  color: inherit;
+img{
+  float: left;
+  width: 500;
 }
 h3.pName{
   padding-top: 3%;
@@ -22,12 +24,12 @@ h3.pName{
 
 .header {
   position: relative;
-  //float: left;
+  float: left;
   top: 0px;
   width: 100%;
   height: 100px;
-  //left: 0;
-  //background: #EB6A4A;
+  left: 0;
+  background: #EB6A4A;
 }
 select {
   padding: 5px;
@@ -35,7 +37,7 @@ select {
   margin-right:2.5em;
 }
 .addToCart{
-  background-color:blue;
+  background-color:#8FD8D2;
   border: none;
   color:white;
   padding: 9px 19px;
@@ -47,11 +49,11 @@ select {
 
 .carousel-w{
   width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  //margin-left: auto;
 }
 
-body { font-family: sans-serif; }
+//body { font-family: sans-serif; }
 #prod_confrmdiv
 {
     display: none;
@@ -69,7 +71,7 @@ body { font-family: sans-serif; }
 #prod_continuediv
 {
   display: none;
-    background-color: white;
+    background-color:white;
     border-radius: 5px;
     border: 2px solid black;
     position: fixed;
@@ -124,4 +126,9 @@ body { font-family: sans-serif; }
 #Prodtruebtn2{
   margin: 5%;
 
+}
+.centerDiv{
+  margin: auto;
+  width: inherit;
+  padding: inherit;
 }

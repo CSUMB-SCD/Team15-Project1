@@ -54,5 +54,6 @@ export class DataService {
 
   getAllProductInfo() {return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/allProductInfo') }
 
+  
   //Trying to push to github
 }
