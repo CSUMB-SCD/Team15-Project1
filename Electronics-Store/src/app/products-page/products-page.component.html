@@ -30,12 +30,12 @@
         <td>${{product.price | number:"0.2"}}</td>
         <td>{{product.quantity}}</td>
         <td>
-          <button class=addBtn type="submit" (click)="addToCart(product)">
+          <button class=addBtn type="submit" (click)="addedToCart()">
           <i class="material-icons">add_shopping_cart</i>
         </button>
         </td>
           <div id="id_confrmdiv"> Would you like to add this item to your cart? <br>
-          <button id="id_truebtn">Yes</button>
+          <button id="id_truebtn" type="submit" (click)="addToCart(product)">Yes</button>
           <button id="id_falsebtn">No</button>
         </div>
         <div id="id_continuediv"> Would you like to checkout or continue shopping?
