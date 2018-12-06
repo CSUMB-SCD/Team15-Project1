@@ -8,8 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
   constructor(private httpClient: HttpClient) { }
 
-  public checkoutCart = [];
+  public checkoutCart = {};
   total:number = 0;
+  public quantity:number;
 
   private loginStatus = new BehaviorSubject('no');
   currentStatus = this.loginStatus.asObservable();
@@ -18,14 +19,29 @@ export class DataService {
     this.loginStatus.next(status);
   }
 
+  addToCart(productId, price, singleQuantity, dbQuantity, productName){
+    this.quantity = dbQuantity;
+
+    if (productId in this.checkoutCart) {
+      this.checkoutCart[productId][1] += singleQuantity;
+      this.checkoutCart[productId][0] += price;
+    } else {
+      this.checkoutCart[productId] = [price, singleQuantity, productName, dbQuantity];
+      console.log(this.checkoutCart[productId]);
+    }
+
+  }
+
   getTotalPrice():number{
     this.total=0;
-    for(let i of this.checkoutCart){
-      this.total += Number(i.price);
+    for(let key in this.checkoutCart) {
+      let pair = this.checkoutCart[key];
+      this.total += pair[0] * pair[1];
     }
-    console.log(this.total);
     return this.total;
   }
+
+
 
   // functions to return JSON
   getUsers() { return this.httpClient.get('https://team15spring-users.herokuapp.com/allUsers')}

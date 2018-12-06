@@ -13,7 +13,7 @@ import { $ } from 'protractor';
 export class ProductsPageComponent implements OnInit {
 
   items$: Object;
-
+  idk$: Object;
   login_message;
   private products = [];
   private infoForProducts = [];
@@ -24,52 +24,38 @@ export class ProductsPageComponent implements OnInit {
   productDesc:string = '';
   found:boolean;
   name:string ='';
+  productId:string;
+
 
   private addedProducts = [];
   constructor(private data: DataService) {}
 
-  // //FIX PROMPT BUTTONS TO YES/NO AND CHECKOUT/CONTINUE SHOPPING
-  // addToCart(addedProducts){
-  //   this.data.checkoutCart.push(addedProducts)
-  //   console.log(this.data.checkoutCart)
-  //   //this.temp = JSON.stringify(addedProducts);
-  //   //console.log(this.temp);
-    
-    
-  //   var confirm = window.confirm("Proceeding to add to cart...");
-  //   if(confirm==true){
-  //     var checkout = window.confirm("Would you like to checkout or continue shopping?")
-  //     if(checkout == true){
-  //       checkout=true;
-  //       console.log("Checking you out")
-  //     }
-  //     else{
-  //       console.log("Not checking you out")
-  //     }
-  //     //alert("Item was added to your cart")
-      
-  //   }
-  //   else{
-  //     alert("Item was not added to your cart");
-  //   }
-  // }
   addToCart(addedProducts) {
-    // this.addedProducts = addedProducts;
-    // console.log(this.addedProducts);
+    //this.data.checkoutCart[this.productId]=[this.price,this.quantityAmt];
+    //console.log(this.data.checkoutCart)
 
-    this.data.checkoutCart.push(addedProducts)
-    console.log(this.data.checkoutCart)
+    // this.data.test.push(addedProducts);
+    // this.productId = this.items$[0].id;
+    // this.price = this.items$[0].price;
+    // this.quantity = this.items$[0].quantity;
+    // this.data.addToCart(this.productId, this.price, 1);
+
+    this.productId = addedProducts.id;
+    this.price = addedProducts.price;
+    this.quantity = addedProducts.quantity;
+    this.productName = addedProducts.productName;
+
+    this.data.addToCart(this.productId, this.price, 1, this.quantity, this.productName);
 
     document.getElementById('id_confrmdiv').style.display = 'block'; //this is the replace of this line
 
     document.getElementById('id_truebtn').onclick = function() {
        // do your delete operation
-       //var checkout = window.confirm('Would you like to checkout or continue shopping?');
-       document.getElementById('id_confrmdiv').style.display = 'none';
-       document.getElementById('id_continuediv').style.display = 'block';
-       document.getElementById('truebtn2').onclick = function() {
-         document.getElementById('id_continuediv').style.display = 'none';
-       };
+      document.getElementById('id_confrmdiv').style.display = 'none';
+      document.getElementById('id_continuediv').style.display = 'block';
+      document.getElementById('truebtn2').onclick = function() {
+        document.getElementById('id_continuediv').style.display = 'none';
+      };
        document.getElementById('falsebtn2').onclick = function() {
          document.getElementById('id_continuediv').style.display = 'none';
        };
@@ -87,8 +73,10 @@ export class ProductsPageComponent implements OnInit {
 
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
-      data => this.items$ = data
-      );
+      data => {
+         this.items$ = data;
+      
+      });
   }
 
   ngOnInit() {

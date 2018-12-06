@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   quantityAmt:number;
   private addedProducts = [];
   selectedValue: string;
-  private options = []; //= ["1","2","3","4"]
+  private options = [];
 
   price:string;
   quantity:string;
@@ -25,6 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   img1:string;
   img2:string;
   img3:string;
+  productId:string;
 
 
   constructor(private route: ActivatedRoute, private data: DataService) {
@@ -32,22 +33,24 @@ export class ProductDetailsComponent implements OnInit {
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
-     console.log($amount);
+     console.log("set"+$amount);
    }
 
    getQuantity(){
     this.quantityAmt = Number(this.quantity);
-    for(let i=0;i<=this.quantityAmt;i++){
+    for(let i=1;i<=this.quantityAmt;i++){
       this.options.push(String(i));
       }
    }
 
    addToCart(){
-    for(let i=0;i<this.quantityAmt;i++){
-      this.data.checkoutCart.push(this.temp$[0]);
-    }
-     console.log(this.data.checkoutCart);
+    // for(let i=0;i<this.quantityAmt;i++){
+    //   this.data.checkoutCart[this.productId]=[this.price,this.quantityAmt];
+    // }
+     //console.log(this.data.checkoutCart);
     
+     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName,);
+
     var confirm = window.confirm("Proceeding to add to cart...");
     if(confirm==true){
       var checkout = window.confirm("Would you like to checkout or continue shopping?")
@@ -76,10 +79,12 @@ export class ProductDetailsComponent implements OnInit {
 
     this.data.getProductInfoByName(param).subscribe(
       data => { 
+        
         this.temp$ = data;
         this.item$ = data[0];
         this.productName = this.item$.productName;
         this.quantity= this.item$.quantity;
+        this.productId = this.item$.productId;
         this.price = this.item$.price;
         this.productDesc = this.item$.productDesc;
         this.img1 = this.item$.image;
