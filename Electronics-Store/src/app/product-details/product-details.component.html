@@ -47,7 +47,7 @@
       <div class = "col-6" style="flex:1px; width:35%;">
         <h3> Description: </h3> <p>{{productDesc}}</p>
         <div class=".col-md-4" style="display: flex;flex: 1px;">
-            <h3 class=price type="text" style="display:inline;" >Price:$</h3> <h3 style="display:inline; color: red;" >{{price | number:"0.2"}}</h3>
+            <h3 class=price type="text" style="display:inline;" >Price:</h3> <h3 style="display:inline; color: red;" >${{price | number:"0.2"}}</h3>
               <h3 class=amt type="text" style="display:inline;padding-left:1em;" >In stock: </h3> <h3 style="display:inline;color: red;" >{{quantity}}</h3>
               <br/>
            </div>
