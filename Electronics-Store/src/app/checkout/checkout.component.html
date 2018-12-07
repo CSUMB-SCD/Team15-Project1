@@ -60,7 +60,7 @@
 
     <!-- [(ngModel)]="selectedValue" (ngModelChange)="updateCart($event, checkout[i][0])" (change)="updateCart($event, checkout[i][0])" -->
     <!-- <select class=sel style="display:inline" [(ngModel)]="selectedValue" (ngModelChange)="updateCart($event, checkout[i][0])"> -->
-    <select class =sel style="display:inline" [(ngModel)]="selectedValues[i]" (ngModelChange)="updateCart($event, checkout[i][0])">
+    <select class =sel style="display:inline" [(ngModel)]="selectedValues[i]" (ngModelChange)="updateCart($event, checkout[i])">
       <option *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
         {{option}}
       </option>

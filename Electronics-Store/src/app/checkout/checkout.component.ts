@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit {
 
   user_credit:number = 0;
   new_credit;
+  orig_data = [];
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
@@ -41,6 +42,8 @@ export class CheckoutComponent implements OnInit {
 
     this.checkout = Object.keys(data.checkoutCart);
     this.testData = Object.values(data.checkoutCart);
+    this.orig_data = Object.values(data.checkoutCart);
+    console.log('orig', this.orig_data);
     this.tempArray = data.checkoutCart;
 
     for(var key in this.checkout){
@@ -56,15 +59,14 @@ export class CheckoutComponent implements OnInit {
     }
 
     this.total = data.getTotalPrice();
-
   }
 
   setPrices(){
     for(let i = 0; i < this.selectedValues.length; i++){
-      this.prices[i] = this.items$[i].price;
+      this.prices[i] = this.orig_data[i][0];
     }
     this.total = this.data.getTotalPrice();
-    console.log(this.prices);
+    console.log('setPrices', this.total);
   }
 
   getQuantity(): number{
@@ -74,23 +76,8 @@ export class CheckoutComponent implements OnInit {
 
   updateCart($event, productId){
     let quantity = Number($event);
-
-
-    for(let i=0;i<this.selectedValues.length;i++){
-
-      if(this.checkout == this.items$[i].id){
-        this.price = this.items$[i].price;
-      }
-      if(this.checkout[i] == productId){
-
-        delete this.data.checkoutCart[productId];
-        //productId, price, singleQuantity, dbQuantity, productName
-        this.data.addToCart(productId, this.testData[i][0], quantity, this.testData[i][3], this.testData[i][2]);
-        this.data.total=0;
-        this.total = this.data.getTotalPrice();
-      }
-    }
-
+    this.data.checkoutCart[productId][1] = quantity;
+    this.total = this.data.getTotalPrice();
   }
 
   range(length:number): number[] {

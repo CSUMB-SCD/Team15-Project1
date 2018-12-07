@@ -63,8 +63,9 @@ export class DataService {
     this.total=0;
     for(let key in this.checkoutCart) {
       let pair = this.checkoutCart[key];
-      this.total += pair[0];
+      this.total += pair[0] * pair[1];
     }
+    console.log('checkout cart', this.checkoutCart);
     return this.total;
   }
 
