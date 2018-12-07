@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
   user_credit:number = 0;
   new_credit;
 
-  boo = [];
+  prices:number [] = [];
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
@@ -61,13 +61,11 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  testFct(){
+  setPrices(){
     for(let i = 0; i<this.selectedValues.length; i++){
           
-      if(this.checkout == this.boo[i].id){
-        this.price = this.boo[i].price;
+        this.prices[i] = this.items$[i].price;
         console.log(this.price);
-      }
     }
     this.total = this.data.getTotalPrice();
   }
@@ -132,10 +130,7 @@ export class CheckoutComponent implements OnInit {
     this.data.getAllProductInfo().subscribe(
       data => { 
         this.items$ = data;
-        this.boo = this.items$;
-        console.log(this.boo);  
-
-        this.testFct();
+        this.setPrices();
         
       });
   }

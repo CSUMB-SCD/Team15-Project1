@@ -26,7 +26,7 @@ export class ProductsPageComponent implements OnInit {
   found:boolean;
   name:string ='';
   productId:string;
-xs
+
 
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}

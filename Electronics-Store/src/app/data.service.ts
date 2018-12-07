@@ -40,14 +40,12 @@ export class DataService {
       }
 
     }
-    console.log(this.new_credit);
+    //console.log(this.new_credit);
     } );
  }
 
   addToCart(productId, price, singleQuantity, dbQuantity, productName){
     this.quantity = dbQuantity;
-    console.log(price);
-    console.log(singleQuantity);
     //console.log(productId);
     if (productId in this.checkoutCart) {
       this.checkoutCart[productId][1] += singleQuantity;
