@@ -26,7 +26,7 @@ export class ProductsPageComponent implements OnInit {
   found:boolean;
   name:string ='';
   productId:string;
-
+xs
 
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}
@@ -40,12 +40,11 @@ export class ProductsPageComponent implements OnInit {
 
     this.data.addToCart(this.productId, this.price, 1, this.quantity, this.productName);
 
+    
     document.getElementById('id_confrmdiv').style.display = 'block';
 
-     //this is the replace of this line
-     document.getElementById('id_confrmdiv').style.display = 'block';
-
     document.getElementById('id_truebtn').onclick = function() {
+      
       document.getElementById('id_confrmdiv').style.display = 'none';
       document.getElementById('id_continuediv').style.display = 'block';
       document.getElementById('truebtn2').onclick = function() {
@@ -57,7 +56,7 @@ export class ProductsPageComponent implements OnInit {
     };
 
     document.getElementById('id_falsebtn').onclick = function() {
-      console.log('Not checking you out');
+      //console.log('Not checking you out');
       document.getElementById('id_confrmdiv').style.display = 'none';
        return false;
     };
