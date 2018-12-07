@@ -9,7 +9,10 @@ import { DataService } from '../data.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  users$;
+
   login_message;
+  userCreditMessage;
   model: any = {};
 
   items$;
@@ -25,12 +28,19 @@ export class CheckoutComponent implements OnInit {
   private testData = [];
   tempArray = {};
   price:number;
+  private tempArr = [];
+
+  user_credit:number = 0;
+  new_credit;
 
   boo = [];
 
-  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) { 
-    
-    console.log(this.data.checkoutCart); 
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
+
+    this.user_credit = this.data.new_credit;
+    console.log(this.user_credit);
+    console.log(this.data.checkoutCart);
+
     this.checkout = Object.keys(data.checkoutCart);
     this.testData = Object.values(data.checkoutCart);
     this.tempArray = data.checkoutCart;
@@ -47,16 +57,7 @@ export class CheckoutComponent implements OnInit {
         this.selectedValues[i] = this.testData[i][1];
     }
 
-
     this.total = data.getTotalPrice();
-
-    // for(let i = 0; i<this.selectedValues.length; i++){
-          
-    //   if(this.checkout == this.test$[i].id){
-    //     this.price = this.test$[i].price;
-    //     console.log(this.price);
-    //   }
-    // }
 
   }
 
@@ -72,7 +73,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getQuantity(): number{
-    
+
     return 0;
   }
 
@@ -85,7 +86,6 @@ export class CheckoutComponent implements OnInit {
       if(this.checkout == this.items$[i].id){
         this.price = this.items$[i].price;
       }
-      //this.getProductsForPrice(this.testData[i][2]);
       if(this.checkout[i] == productId){
         
         delete this.data.checkoutCart[productId];
@@ -95,11 +95,7 @@ export class CheckoutComponent implements OnInit {
         this.total = this.data.getTotalPrice();
       }
     }
-    // if(this.checkout)
-    // console.log(this.tempArray[productId]);
-
-    
-    //console.log(productId);
+ 
   }
 
   range(length:number): number[] {
@@ -118,7 +114,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmPurchase() {
+
+    if((this.user_credit - this.total) <= 0){
+      this.userCreditMessage = 'notEnough';
+      this.newCreditStatus(this.userCreditMessage);
+      // alert('You do not have enough credit');
+    }
+    else{
+      this.userCreditMessage = 'enough';
+      this.newCreditStatus(this.userCreditMessage);
+    }
     this.router.navigate(['../checkout-info']);
+    console.log(this.user_credit - this.total);
   }
 
   getProductsForPrice(){
@@ -132,11 +139,15 @@ export class CheckoutComponent implements OnInit {
         
       });
   }
+  
+  newCreditStatus(changeCreditStatus){
+    this.data.changeCurrentCreditStatus(changeCreditStatus);
+  }
 
   ngOnInit() {
     this.data.currentStatus.subscribe(message => this.login_message = message);
     this.getProductsForPrice();
-    
+    this.data.currentUserCreditStatus.subscribe(creditMessage => this.userCreditMessage = creditMessage);
   }
-  
+
 }

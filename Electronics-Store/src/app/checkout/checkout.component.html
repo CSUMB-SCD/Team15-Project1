@@ -7,7 +7,8 @@
           position:absolute;
           top:0;
           border: none;
-          right:0;" routerLink="../sign-in">
+          right:0;
+          color: white;" routerLink="../sign-in">
                 <p class="buttonText">Go to Sign In</p>
               </button>
         </li>
@@ -23,12 +24,13 @@
   position:absolute;
   top:0;
   right:0;
-  border: none;"
+  border: none;
+  color: white;"
   button #submit (click)="signOut()">
         <p class="buttonText">Sign Out</p>
   </button>
 
-<h1 class= heading> Checkout </h1>
+<h1 class= heading><strong>Checkout</strong> </h1>
 <table class="table1">
   <tr>
     <th>Product Name</th>
@@ -36,8 +38,8 @@
     <th>Quantity</th>
     <th>Edit Quantity</th>
   </tr>
-  
-  <tr *ngFor="let productId of checkout; let i = index"> 
+  <br>
+  <tr *ngFor="let productId of checkout; let i = index">
 
     <td>{{testData[i][2]}}</td>
     <td>{{price}}</td>
@@ -47,7 +49,7 @@
 
     <!-- <select [(ngModel)]="selectedValue" (ngModelChange)="tmp($event)" class =sel style="display:inline">
         <option *ngFor="let option of options">{{option}}</option>
-  
+
     </select> -->
 
     <!-- <select class=sel id="mySelect" onchange="updateCart()" style="display:inline">
@@ -60,25 +62,23 @@
     <!-- <select class=sel style="display:inline" [(ngModel)]="selectedValue" (ngModelChange)="updateCart($event, checkout[i][0])"> -->
     <select class =sel style="display:inline" [(ngModel)]="selectedValues[i]" (ngModelChange)="updateCart($event, checkout[i][0])">
       <option *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
-        {{option}} 
+        {{option}}
       </option>
     </select>
   </tr>
 </table>
 
-<h3>Total: ${{ total | number:"0.2" }}</h3>
-
-<div class = "row">
-  <button class="btn btn-primary" style="background: #8FD8D2;padding: 9px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 13px;
-  position: absolute;
-  bottom: 10px;
-  border: none;
-  width: 15%;" type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
+<footer>
+<div class="container" style="position:fixed; bottom:0; height: 5%;">
+  <div class = "row">
+    <div class= "col-sm">
+      <h3 class = "totalFix" style="display: inline-block; font-size:1.4em;">Total: ${{ total | number:"0.2" }}</h3>
+    </div>
+    <div class = "col-sm" style="display: inline-block;">
+        <button class="btn btn-primary" style="background: #8FD8D2; height: relative; font-size: 1.4em; border: none;" type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
+      </div>
+  </div>
 </div>
+</footer>
+
 </div>
-
-

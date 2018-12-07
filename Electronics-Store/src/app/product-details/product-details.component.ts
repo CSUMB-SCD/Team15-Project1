@@ -49,27 +49,33 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart() {
     console.log(this.price);
+
+    // let succeeded = false;
     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
 
-     document.getElementById('prod_confrmdiv').style.display = 'block';
-     document.getElementById('prod_truebtn').onclick = function() {
+    //  document.getElementById('prod_confrmdiv').style.display = 'block';
+    //  document.getElementById('prod_truebtn').onclick = function() {
       // do your delete operation
-      
-      document.getElementById('prod_confrmdiv').style.display = 'none';
+      // document.getElementById('prod_confrmdiv').style.display = 'none';
+
       document.getElementById('prod_continuediv').style.display = 'block';
       document.getElementById('Prodtruebtn2').onclick = function() {
-        document.getElementById('prod_continuediv').style.display = 'none';
       };
       document.getElementById('Prodfalsebtn2').onclick = function() {
         document.getElementById('prod_continuediv').style.display = 'none';
       };
-   };
+      // succeeded = true;
 
-   document.getElementById('prod_falsebtn').onclick = function() {
-     console.log('Not checking you out');
-     document.getElementById('prod_confrmdiv').style.display = 'none';
-      return false;
-   };
+   //};
+
+  //  if(succeeded){
+  //   this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
+  //  }
+  //  document.getElementById('prod_falsebtn').onclick = function() {
+  //    console.log('Not checking you out');
+  //    document.getElementById('prod_confrmdiv').style.display = 'none';
+  //     return false;
+  //  };
 
   }
 
@@ -79,8 +85,8 @@ export class ProductDetailsComponent implements OnInit {
     console.log(param);
 
     this.data.getProductInfoByName(param).subscribe(
-      data => { 
-        
+      data => {
+
         this.temp$ = data;
         //console.log(this.temp$);
         this.item$ = data[0];
@@ -93,7 +99,7 @@ export class ProductDetailsComponent implements OnInit {
         this.img1 = this.item$.image;
         this.img2 = this.item$.image2;
         this.img3 = this.item$.image3;
-        
+
         this.getQuantity();
       });
 
