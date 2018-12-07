@@ -40,14 +40,12 @@ export class DataService {
       }
 
     }
-    console.log(this.new_credit);
+    //console.log(this.new_credit);
     } );
  }
 
   addToCart(productId, price, singleQuantity, dbQuantity, productName){
     this.quantity = dbQuantity;
-    console.log(price);
-    console.log(singleQuantity);
     //console.log(productId);
     if (productId in this.checkoutCart) {
       this.checkoutCart[productId][1] += singleQuantity;
@@ -63,8 +61,9 @@ export class DataService {
     this.total=0;
     for(let key in this.checkoutCart) {
       let pair = this.checkoutCart[key];
-      this.total += pair[0];
+      this.total += pair[0] * pair[1];
     }
+    console.log('checkout cart', this.checkoutCart);
     return this.total;
   }
 

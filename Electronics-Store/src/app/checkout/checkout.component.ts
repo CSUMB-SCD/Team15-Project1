@@ -29,17 +29,20 @@ export class CheckoutComponent implements OnInit {
   tempArray = {};
   price:number;
   private tempArr = [];
+  orig_data = [];
 
   user_credit:number = 0;
   new_credit;
 
-  boo = [];
+  prices:number [] = [];
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
     this.user_credit = this.data.new_credit;
     console.log(this.user_credit);
     console.log(this.data.checkoutCart);
+    this.orig_data = Object.values(data.checkoutCart);
++   console.log('orig', this.orig_data);
 
     this.checkout = Object.keys(data.checkoutCart);
     this.testData = Object.values(data.checkoutCart);
@@ -61,40 +64,39 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  testFct(){
+  setPrices(){
     for(let i = 0; i<this.selectedValues.length; i++){
           
-      if(this.checkout == this.boo[i].id){
-        this.price = this.boo[i].price;
-        console.log(this.price);
-      }
+        this.prices[i] = this.orig_data[i][0];
+        
     }
     this.total = this.data.getTotalPrice();
+    console.log('setPrices', this.total);
   }
+
+  
 
   getQuantity(): number{
 
     return 0;
   }
-
+  
   updateCart($event, productId){
     let quantity = Number($event);
-    
+    this.data.checkoutCart[productId][1] = quantity;
+    this.total = this.data.getTotalPrice();
   
-    for(let i=0;i<this.selectedValues.length;i++){
+    // for(let i=0;i<this.selectedValues.length;i++){
       
-      if(this.checkout == this.items$[i].id){
-        this.price = this.items$[i].price;
-      }
-      if(this.checkout[i] == productId){
+    //   if(this.checkout[i] == productId){
         
-        delete this.data.checkoutCart[productId];
-        //productId, price, singleQuantity, dbQuantity, productName
-        this.data.addToCart(productId, this.testData[i][0], quantity, this.testData[i][3], this.testData[i][2]);
-        this.data.total=0;
-        this.total = this.data.getTotalPrice();
-      }
-    }
+    //     delete this.data.checkoutCart[productId];
+    //     //productId, price, singleQuantity, dbQuantity, productName
+    //     this.data.addToCart(productId, this.testData[i][0], quantity, this.testData[i][3], this.testData[i][2]);
+    //     this.data.total=0;
+    //     this.total = this.data.getTotalPrice();
+    //   }
+    // }
  
   }
 
@@ -132,10 +134,7 @@ export class CheckoutComponent implements OnInit {
     this.data.getAllProductInfo().subscribe(
       data => { 
         this.items$ = data;
-        this.boo = this.items$;
-        console.log(this.boo);  
-
-        this.testFct();
+        this.setPrices();
         
       });
   }
