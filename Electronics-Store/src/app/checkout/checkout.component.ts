@@ -15,8 +15,9 @@ export class CheckoutComponent implements OnInit {
   userCreditMessage;
   model: any = {};
 
+  items$;
   test$;
-  private selectedValues:string[] = [];
+  private selectedValues:number[];
   private checkout = {};
   total:number = 0;
   quantityAmt:number;
@@ -25,37 +26,76 @@ export class CheckoutComponent implements OnInit {
   private options = [];
   productName:string;
   private testData = [];
+  tempArray = {};
   price:number;
   private tempArr = [];
 
   user_credit:number = 0;
   new_credit;
 
+  boo = [];
+
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
     this.user_credit = this.data.new_credit;
     console.log(this.user_credit);
     console.log(this.data.checkoutCart);
+
     this.checkout = Object.keys(data.checkoutCart);
     this.testData = Object.values(data.checkoutCart);
+    this.tempArray = data.checkoutCart;
 
     for(var key in this.checkout){
       this.testData.push(this.checkout[key]);
-      this.price = this.testData[key][0];
     }
 
-    console.log(this.price);
+    this.selectedValues = [];
     this.selectedValues.length = Object.keys(this.checkout).length;
-
+    
+   
     for(let i = 0; i < this.selectedValues.length; i++) {
-        this.selectedValues[i] = this.testData[i].quantity;
+        this.selectedValues[i] = this.testData[i][1];
     }
+
     this.total = data.getTotalPrice();
+
+  }
+
+  testFct(){
+    for(let i = 0; i<this.selectedValues.length; i++){
+          
+      if(this.checkout == this.boo[i].id){
+        this.price = this.boo[i].price;
+        console.log(this.price);
+      }
+    }
+    this.total = this.data.getTotalPrice();
   }
 
   getQuantity(): number{
 
     return 0;
+  }
+
+  updateCart($event, productId){
+    let quantity = Number($event);
+    
+  
+    for(let i=0;i<this.selectedValues.length;i++){
+      
+      if(this.checkout == this.items$[i].id){
+        this.price = this.items$[i].price;
+      }
+      if(this.checkout[i] == productId){
+        
+        delete this.data.checkoutCart[productId];
+        //productId, price, singleQuantity, dbQuantity, productName
+        this.data.addToCart(productId, this.testData[i][0], quantity, this.testData[i][3], this.testData[i][2]);
+        this.data.total=0;
+        this.total = this.data.getTotalPrice();
+      }
+    }
+ 
   }
 
   range(length:number): number[] {
@@ -74,8 +114,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmPurchase() {
-    // console.log(this.data.getUsersByName(this.username));
-    // this.router.navigate(['../checkout-info']);
 
     if((this.user_credit - this.total) <= 0){
       this.userCreditMessage = 'notEnough';
@@ -90,11 +128,25 @@ export class CheckoutComponent implements OnInit {
     console.log(this.user_credit - this.total);
   }
 
+  getProductsForPrice(){
+    this.data.getAllProductInfo().subscribe(
+      data => { 
+        this.items$ = data;
+        this.boo = this.items$;
+        console.log(this.boo);  
+
+        this.testFct();
+        
+      });
+  }
+  
   newCreditStatus(changeCreditStatus){
     this.data.changeCurrentCreditStatus(changeCreditStatus);
   }
+
   ngOnInit() {
     this.data.currentStatus.subscribe(message => this.login_message = message);
+    this.getProductsForPrice();
     this.data.currentUserCreditStatus.subscribe(creditMessage => this.userCreditMessage = creditMessage);
   }
 
