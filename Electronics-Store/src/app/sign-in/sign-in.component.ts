@@ -43,22 +43,9 @@ export class SignInComponent implements OnInit {
     }
 
 //////
-    if (this.success) {
       this.login_message = 'yes';
       this.newMessage(this.login_message);
       this.router.navigate(['../products-page']);
-    }
-    else if(valid) {
-      this.login_message = 'no';
-      this.newMessage(this.login_message);
-      alert('Invalid passsword. Please enter correct password.');
-    }
-    else if(invalid) {
-      this.login_message = 'no';
-      this.newMessage(this.login_message);
-      alert('Invalid login. Please enter valid login credentials.');
-    }
-
   }
 
 

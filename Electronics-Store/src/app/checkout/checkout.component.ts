@@ -27,13 +27,11 @@ export class CheckoutComponent implements OnInit {
   productName:string;
   private testData = [];
   tempArray = {};
-  price:number;
+  prices:number[] = [];
   private tempArr = [];
 
   user_credit:number = 0;
   new_credit;
-
-  boo = [];
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
@@ -51,8 +49,8 @@ export class CheckoutComponent implements OnInit {
 
     this.selectedValues = [];
     this.selectedValues.length = Object.keys(this.checkout).length;
-    
-   
+
+
     for(let i = 0; i < this.selectedValues.length; i++) {
         this.selectedValues[i] = this.testData[i][1];
     }
@@ -61,15 +59,12 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  testFct(){
-    for(let i = 0; i<this.selectedValues.length; i++){
-          
-      if(this.checkout == this.boo[i].id){
-        this.price = this.boo[i].price;
-        console.log(this.price);
-      }
+  setPrices(){
+    for(let i = 0; i < this.selectedValues.length; i++){
+      this.prices[i] = this.items$[i].price;
     }
     this.total = this.data.getTotalPrice();
+    console.log(this.prices);
   }
 
   getQuantity(): number{
@@ -79,15 +74,15 @@ export class CheckoutComponent implements OnInit {
 
   updateCart($event, productId){
     let quantity = Number($event);
-    
-  
+
+
     for(let i=0;i<this.selectedValues.length;i++){
-      
+
       if(this.checkout == this.items$[i].id){
         this.price = this.items$[i].price;
       }
       if(this.checkout[i] == productId){
-        
+
         delete this.data.checkoutCart[productId];
         //productId, price, singleQuantity, dbQuantity, productName
         this.data.addToCart(productId, this.testData[i][0], quantity, this.testData[i][3], this.testData[i][2]);
@@ -95,7 +90,7 @@ export class CheckoutComponent implements OnInit {
         this.total = this.data.getTotalPrice();
       }
     }
- 
+
   }
 
   range(length:number): number[] {
@@ -130,16 +125,12 @@ export class CheckoutComponent implements OnInit {
 
   getProductsForPrice(){
     this.data.getAllProductInfo().subscribe(
-      data => { 
+      data => {
         this.items$ = data;
-        this.boo = this.items$;
-        console.log(this.boo);  
-
-        this.testFct();
-        
+        this.setPrices();
       });
   }
-  
+
   newCreditStatus(changeCreditStatus){
     this.data.changeCurrentCreditStatus(changeCreditStatus);
   }
