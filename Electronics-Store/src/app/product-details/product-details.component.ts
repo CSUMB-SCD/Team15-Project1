@@ -9,14 +9,15 @@ import { DataService } from '../data.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  temp$
-  item$
+  temp$;
+  public item$;
   test:number;
   temp:string;
   quantityAmt:number = 1;
   private addedProducts = [];
   selectedValue: string;
   private options = [];
+  //private testData = [];
 
   price:string;
   quantity:string;
@@ -30,11 +31,14 @@ export class ProductDetailsComponent implements OnInit {
   login_message;
 
 
-  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
+
+    //this.testData = Object.values(data.checkoutCart);
+   }
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
-     console.log("set"+$amount);
+     //console.log("set"+$amount);
    }
 
    getQuantity(){
@@ -44,6 +48,7 @@ export class ProductDetailsComponent implements OnInit {
    }
 
   addToCart() {
+    console.log(this.price);
 
     // let succeeded = false;
     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
@@ -83,11 +88,12 @@ export class ProductDetailsComponent implements OnInit {
       data => {
 
         this.temp$ = data;
+        //console.log(this.temp$);
         this.item$ = data[0];
         this.productName = this.item$.productName;
         this.quantity= this.item$.quantity;
         this.productId = this.item$.id;
-        console.log(this.item$);
+        //console.log(this.item$);
         this.price = this.item$.price;
         this.productDesc = this.item$.productDesc;
         this.img1 = this.item$.image;
