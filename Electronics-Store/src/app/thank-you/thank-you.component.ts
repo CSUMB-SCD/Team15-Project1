@@ -36,8 +36,8 @@ export class ThankYouComponent implements OnInit {
   signOut() {
     this.login_message = 'no';
     this.data.changeMessage('no');
-    window.location.reload();
     this.router.navigate(['../home']);
+    window.location.reload();
 }
 
 confirmationNumber(): number {
