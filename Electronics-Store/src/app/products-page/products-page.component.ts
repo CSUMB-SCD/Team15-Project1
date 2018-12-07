@@ -31,30 +31,6 @@ xs
   private addedProducts = [];
   constructor(private data: DataService, private router: Router) {}
 
-  addedToCart() {
-
-    // this.productId = addedProducts.id;
-    // this.price = addedProducts.price;
-    // this.quantity = addedProducts.quantity;
-    // this.productName = addedProducts.productName;
-     //this is the replace of this line
-     document.getElementById('id_confrmdiv').style.display = 'block';
-    document.getElementById('id_truebtn').onclick = function() {
-      document.getElementById('id_confrmdiv').style.display = 'none';
-      document.getElementById('id_continuediv').style.display = 'block';
-      document.getElementById('truebtn2').onclick = function() {
-      };
-       document.getElementById('falsebtn2').onclick = function() {
-         document.getElementById('id_continuediv').style.display = 'none';
-       };
-    };
-
-    document.getElementById('id_falsebtn').onclick = function() {
-      console.log('Not checking you out');
-      document.getElementById('id_confrmdiv').style.display = 'none';
-       return false;
-    };
-  }
   addToCart(addedProducts) {
 
     this.productId = addedProducts.id;
@@ -63,11 +39,10 @@ xs
     this.productName = addedProducts.productName;
 
 
-   // document.getElementById('id_confrmdiv').style.display = 'block';
+    // document.getElementById('id_confrmdiv').style.display = 'block';
     this.data.addToCart(this.productId, this.price, 1, this.quantity, this.productName);
 
-    console.log(this.data.addToCart(this.productId, this.price, 1, this.quantity, this.productName));
-     //this is the replace of this line
+      //this is the replace of this line
 
     //document.getElementById('id_truebtn').onclick = function() {
       //document.getElementById('id_confrmdiv').style.display = 'none';
@@ -75,9 +50,9 @@ xs
       document.getElementById('id_continuediv').style.display = 'block';
       document.getElementById('truebtn2').onclick = function() {
       };
-       document.getElementById('falsebtn2').onclick = function() {
-         document.getElementById('id_continuediv').style.display = 'none';
-       };
+        document.getElementById('falsebtn2').onclick = function() {
+          document.getElementById('id_continuediv').style.display = 'none';
+        };
     //};
 
     // document.getElementById('id_falsebtn').onclick = function() {
@@ -91,7 +66,7 @@ xs
   postProductInfo() {
     this.data.getAllProductInfo().subscribe(
       data => {
-         this.items$ = data;
+          this.items$ = data;
 
       });
   }
@@ -107,3 +82,29 @@ xs
     this.router.navigate(['../home']);
   }
 }
+
+// addedToCart() {
+
+//   // this.productId = addedProducts.id;
+//   // this.price = addedProducts.price;
+//   // this.quantity = addedProducts.quantity;
+//   // this.productName = addedProducts.productName;
+//    //this is the replace of this line
+//    document.getElementById('id_confrmdiv').style.display = 'block';
+//   document.getElementById('id_truebtn').onclick = function() {
+//     document.getElementById('id_confrmdiv').style.display = 'none';
+//     document.getElementById('id_continuediv').style.display = 'block';
+//     document.getElementById('truebtn2').onclick = function() {
+//     };
+//      document.getElementById('falsebtn2').onclick = function() {
+//        document.getElementById('id_continuediv').style.display = 'none';
+//      };
+//   };
+
+//   document.getElementById('id_falsebtn').onclick = function() {
+//     console.log('Not checking you out');
+//     document.getElementById('id_confrmdiv').style.display = 'none';
+//      return false;
+//   };
+// }
+
