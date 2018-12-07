@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
-  background: #F2F2F2;
-  font-family: 'Montserrat', sans-serif;
+  background: #f1faf9;
+  font-family: 'Ubuntu Mono', monospace;
   height: 100vh;
+  font-size: 1.2em;
+  color: #8b1154;
 }
 
 #container {
@@ -62,5 +64,18 @@ body {
   position:absolute;
   top:0;
   right:0;
+  // background: #8FD8D2;
+  // color: white;
 }
 
+.button_left {
+  margin-top: 5px;
+  margin-left: 30px;
+  position: relative;;
+  top:0;
+  left:0;
+}
+
+footer{
+  text-align: center;
+}

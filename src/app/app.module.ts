@@ -12,6 +12,8 @@ import { ProductsPageComponent } from './products-page/products-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from './data.service';
+import { FormsModule } from '@angular/forms';
+import { CheckoutInfoComponent } from './checkout-info/checkout-info.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { DataService } from './data.service';
     ProductDetailsComponent,
     ProductsPageComponent,
     SignInComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    CheckoutInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   items$: Object;
-    login_message;
+  login_message;
 
    name:string = '';
    found:boolean;
@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
   signOut() {
     this.login_message = 'no';
     this.data.changeMessage('no');
-
 }
 
 }

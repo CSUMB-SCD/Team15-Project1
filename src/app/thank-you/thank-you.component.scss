@@ -7,17 +7,23 @@
   text-align: center;
   //border:dashed;
 }
-h1{
-  padding-top: 2.5em;
+h1, p{
+  // padding-top: 2.5em;
   text-align: center;
 }
-div{
-  position: relative;
-  left: 45%;
-  width:30em;
-  height:18em;
+// div{
+//   position: relative;
+//   left: 45%;
+//   width:30em;
+//   height:18em;
 
-}
+// }
 .price{
   padding: 25%;
+}
+
+div{
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
 }

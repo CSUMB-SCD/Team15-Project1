@@ -1,18 +1,86 @@
-<h1 class= heading> Checkout </h1>
-<body>
-  <table class="table1">
-    <tr>
-      <th>Product Name</th>
-      <th>Amt. in Stock</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-  <div class = "row">
-    <button class=addBtn type="submit">Confirm Purchase</button>
+<div *ngIf="login_message != 'yes'">
+    <h1>Please Sign In To View Your Cart.</h1>
+    <ul>
+        <li>
+          <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+          margin-right: 30px;
+          position:absolute;
+          top:0;
+          border: none;
+          right:0;
+          color: white;" routerLink="../sign-in">
+                <p class="buttonText">Go to Sign In</p>
+              </button>
+        </li>
+      </ul>
+      <br><br>
+      <hr>
   </div>
-</body>
+
+
+<div *ngIf="login_message != 'no'">
+  <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+  margin-right: 30px;
+  position:absolute;
+  top:0;
+  right:0;
+  border: none;
+  color: white;"
+  button #submit (click)="signOut()">
+        <p class="buttonText">Sign Out</p>
+  </button>
+
+<h1 class= heading><strong>Checkout</strong> </h1>
+<table class="table1">
+  <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Edit Quantity</th>
+  </tr>
+  <br>
+  <tr *ngFor="let productId of checkout; let i = index">
+
+    <td>{{testData[i][2]}}</td>
+    <td>{{prices[i]}}</td>
+    <td>{{testData[i][1]}}</td>
+      <!-- <td> {{display.productName}}</td>
+      <td>{{display.price }}</td> -->
+
+    <!-- <select [(ngModel)]="selectedValue" (ngModelChange)="tmp($event)" class =sel style="display:inline">
+        <option *ngFor="let option of options">{{option}}</option>
+
+    </select> -->
+
+    <!-- <select class=sel id="mySelect" onchange="updateCart()" style="display:inline">
+      <option value="amount" *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
+        {{option}} 
+      </option>
+    </select> -->
+
+    <!-- [(ngModel)]="selectedValue" (ngModelChange)="updateCart($event, checkout[i][0])" (change)="updateCart($event, checkout[i][0])" -->
+    <!-- <select class=sel style="display:inline" [(ngModel)]="selectedValue" (ngModelChange)="updateCart($event, checkout[i][0])"> -->
+      <select class =sel style="display:inline" [(ngModel)]="selectedValues[i]" (ngModelChange)="updateCart($event, checkout[i])">
+        <option *ngFor="let option of range(testData[i][3]); let j = index" selected="{{j+1 ==  testData[i][1] ? 'selected' : ''}}">
+          {{option}}
+        </option>
+      </select>
+  </tr>
+</table>
+
+
+
+<footer>
+<div class="container" style="position:fixed; bottom:0; height: 5%;">
+  <div class = "row">
+    <div class= "col-sm">
+      <h3 class = "totalFix" style="display: inline-block; font-size:1.4em;">Total: ${{ total | number:"0.2" }}</h3>
+    </div>
+    <div class = "col-sm" style="display: inline-block;">
+        <button class="btn btn-primary" style="background: #8FD8D2; height: relative; font-size: 1.4em; border: none;" type="submit" (click)="confirmPurchase()">Confirm Purchase</button>
+      </div>
+  </div>
+</div>
+</footer>
+
+</div>
