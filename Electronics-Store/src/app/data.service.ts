@@ -11,6 +11,7 @@ export class DataService {
   users$;
 
   public checkoutCart = {};
+  public temp = {};
   total:number = 0;
   public quantity:number;
 
@@ -33,40 +34,43 @@ export class DataService {
  currCredit(userName){
   this.getUsers().subscribe(data => {
     this.users$ = data;
-    // console.log(this.users$.length);
     for(let i=0; i<this.users$.length;i++ ){
       if (this.users$[i].username === userName){
           this.new_credit = this.users$[i].credit;
       }
-
     }
-    //console.log(this.new_credit);
+    console.log(this.new_credit);
     } );
  }
 
   addToCart(productId, price, singleQuantity, dbQuantity, productName){
     this.quantity = dbQuantity;
-    //console.log(productId);
+    console.log(price);
+    console.log(singleQuantity);
     if (productId in this.checkoutCart) {
+      this.temp[productId][1] += singleQuantity;
+      this.temp[productId][0] = (price);
+
       this.checkoutCart[productId][1] += singleQuantity;
       this.checkoutCart[productId][0] += (price * singleQuantity);
     } else {
-      this.checkoutCart[productId] = [price * singleQuantity, singleQuantity, productName, dbQuantity];
-      //console.log(this.checkoutCart[productId]);
+      this.temp[productId] = [price, singleQuantity, productName, productName, dbQuantity];
+      this.checkoutCart[productId] = [this.temp[productId][0] * singleQuantity, singleQuantity, productName, dbQuantity];
     }
 
   }
 
   getTotalPrice():number{
     this.total=0;
-    for(let key in this.checkoutCart) {
-      let pair = this.checkoutCart[key];
+    for(let key in this.temp) {
+      let pair = this.temp[key];
+      console.log(pair);
       this.total += pair[0] * pair[1];
+      console.log(this.total);
+      console.log('checkout cart', this.temp[key][0]);
     }
-    console.log('checkout cart', this.checkoutCart);
     return this.total;
   }
-
 
 
   // functions to return JSON
@@ -82,6 +86,4 @@ export class DataService {
 
   getAllProductInfo() {return this.httpClient.get('https://spring-boot-testing-438.herokuapp.com/allProductInfo') }
 
-
-  //Trying to push to github
 }
