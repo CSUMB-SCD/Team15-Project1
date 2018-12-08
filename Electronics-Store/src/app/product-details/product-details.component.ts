@@ -17,7 +17,6 @@ export class ProductDetailsComponent implements OnInit {
   private addedProducts = [];
   selectedValue: string;
   private options = [];
-  //private testData = [];
 
   price:string;
   quantity:string;
@@ -33,12 +32,10 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
 
-    //this.testData = Object.values(data.checkoutCart);
    }
 
    setQuantityAmt($amount){
      this.quantityAmt = Number($amount);
-     //console.log("set"+$amount);
    }
 
    getQuantity(){
@@ -48,52 +45,28 @@ export class ProductDetailsComponent implements OnInit {
    }
 
   addToCart() {
-    console.log(this.price);
-
-    // let succeeded = false;
     this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
-
-    //  document.getElementById('prod_confrmdiv').style.display = 'block';
-    //  document.getElementById('prod_truebtn').onclick = function() {
-      // do your delete operation
-      // document.getElementById('prod_confrmdiv').style.display = 'none';
-
-      document.getElementById('prod_continuediv').style.display = 'block';
-      document.getElementById('Prodtruebtn2').onclick = function() {
-      };
-      document.getElementById('Prodfalsebtn2').onclick = function() {
-        document.getElementById('prod_continuediv').style.display = 'none';
-      };
-      // succeeded = true;
-
-   //};
-
-  //  if(succeeded){
-  //   this.data.addToCart(this.productId, this.price, this.quantityAmt,this.quantity,this.productName);
-  //  }
-  //  document.getElementById('prod_falsebtn').onclick = function() {
-  //    console.log('Not checking you out');
-  //    document.getElementById('prod_confrmdiv').style.display = 'none';
-  //     return false;
-  //  };
-
+    document.getElementById('prod_continuediv').style.display = 'block';
+    document.getElementById('Prodtruebtn2').onclick = function() {
+    };
+    document.getElementById('Prodfalsebtn2').onclick = function() {
+      document.getElementById('prod_continuediv').style.display = 'none';
+    };
+ 
   }
 
    getAllProductDetails(){
 
     const param: string = this.route.snapshot.queryParamMap.get('productName');
-    console.log(param);
 
     this.data.getProductInfoByName(param).subscribe(
       data => {
 
         this.temp$ = data;
-        //console.log(this.temp$);
         this.item$ = data[0];
         this.productName = this.item$.productName;
         this.quantity= this.item$.quantity;
         this.productId = this.item$.id;
-        //console.log(this.item$);
         this.price = this.item$.price;
         this.productDesc = this.item$.productDesc;
         this.img1 = this.item$.image;

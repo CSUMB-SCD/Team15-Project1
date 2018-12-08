@@ -1,92 +1,90 @@
 <div *ngIf="login_message != 'yes'">
-    <h1>Please sign-in to view products.</h1>
-    <ul>
-        <li>
-          <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
-          margin-right: 30px;
-          position:absolute;
-          top:0;
-          border: none;
-          right:0;
-          color: white;" routerLink="../sign-in">
-                <p class="buttonText">Go to Sign In</p>
-              </button>
-        </li>
-      </ul>
-      <br><br>
-      <hr>
-  </div>
+  <h1>Please sign-in to view products.</h1>
+  <ul>
+      <li>
+        <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+        margin-right: 30px;
+        position:absolute;
+        top:0;
+        border: none;
+        right:0;
+        color: white;" routerLink="../sign-in">
+              <p class="buttonText">Go to Sign In</p>
+            </button>
+      </li>
+    </ul>
+    <br><br>
+    <hr>
+</div>
 
 <body *ngIf="login_message == 'yes'">
 <div id="prod_confrmdiv"> Would you like to add this item to your cart? <br>
-  <button id="prod_truebtn">Yes</button>
-  <button id="prod_falsebtn">No</button>
+<button id="prod_truebtn">Yes</button>
+<button id="prod_falsebtn">No</button>
 </div>
 <div id="prod_continuediv"> Would you like to checkout or continue shopping?
-  <button id="Prodtruebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Checkout</button>
-  <button id="Prodfalsebtn2">Continue Shopping</button>
+<button id="Prodtruebtn2" [routerLink]="['/checkout']" [queryParams]="this.addedProducts">Checkout</button>
+<button id="Prodfalsebtn2">Continue Shopping</button>
 </div>
 <div *ngIf="login_message != 'no'">
-  <button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
-  margin-right: 30px;
-  position:absolute;
-  top:0;
-  border: none;
-  right:0;"
-  button #submit (click)="signOut()">
-      <p class="buttonText">Sign Out</p>
-  </button>
+<button class="btn btn-primary" style="background: #8FD8D2;margin-top: 5px;
+margin-right: 30px;
+position:absolute;
+top:0;
+border: none;
+right:0;"
+button #submit (click)="signOut()">
+    <p class="buttonText">Sign Out</p>
+</button>
 </div>
 <h1 class="center">
-  <strong>{{productName}}</strong>
+<strong>{{productName}}</strong>
 </h1>
 <hr>
 <br>
 <br>
-<!-- <h1 class =pName><strong>{{productName}}</strong></h1> -->
 <div class= "centerDiv"style="background-color: ">
-  <!-- <div> -->
-  <div class="row" sytle="display: flex;">
-    <div class="carousel-w" >
-      <ngb-carousel class = "col-sm" style="flex:1;margin:0">
-        <ng-template ngbSlide>
+<div class="row" sytle="display: flex;">
+  <div class="carousel-w" >
+    <ngb-carousel class = "col-sm" style="flex:1;margin:0">
+      <ng-template ngbSlide>
 
-          <img src="../../assets/img/{{img1}}"  alt="{{productname}}"  width="428" height="428" >
-        </ng-template>
-
-        <ng-template ngbSlide>
-          <img src="../../assets/img/{{img2}}" alt="{{productname}}" width="428" height="428" >
-        </ng-template>
+        <img src="../../assets/img/{{img1}}"  alt="{{productname}}"  width="428" height="428" >
+      </ng-template>
 
       <ng-template ngbSlide>
-          <img src="../../assets/img/{{img3}}" alt="{{productname}}" width="428" height="428">
+        <img src="../../assets/img/{{img2}}" alt="{{productname}}" width="428" height="428" >
       </ng-template>
-      </ngb-carousel>
-    </div>
-      <div class = "col-6" style="flex:1px; width:35%;">
-        <h3> Description: </h3> <p>{{productDesc}}</p>
-        <div class=".col-md-4" style="display: flex;flex: 1px;">
-            <h3 class=price type="text" style="display:inline;" >Price:</h3> <h3 style="display:inline;" ><strong>${{price | number:"0.2"}}</strong></h3>
-              <h3 class=amt type="text" style="display:inline;padding-left:1em;" >In stock: </h3> <h3 style="display:inline;" ><strong>{{quantity}}</strong></h3>
-              <br/>
-           </div>
-           <div class = ".col-md-4">
-            <h4 style="display:inline-block;">Quantity: </h4>
-            <select [(ngModel)]="selectedValue" (ngModelChange)="setQuantityAmt($event)" class =sel style="display:inline-block;" >
-              <option *ngFor="let option of options">{{option}}</option>
 
-            </select>
-            <button class=addToCart type="submit" style="display:inline; font-size: 1.0em;"  (click)="addToCart()"><strong>Add to Cart</strong></button>
-           </div>
-           <BR CLEAR="left"/>
-      </div> <br/>
-      </div> <br/>
+    <ng-template ngbSlide>
+        <img src="../../assets/img/{{img3}}" alt="{{productname}}" width="428" height="428">
+    </ng-template>
+    </ngb-carousel>
   </div>
+    <div class = "col-6" style="flex:1px; width:35%;">
+      <h3> Description: </h3> <p>{{productDesc}}</p>
+      <div class=".col-md-4" style="display: flex;flex: 1px;">
+          <h3 class=price type="text" style="display:inline;" >Price:</h3> <h3 style="display:inline;" ><strong>${{price | number:"0.2"}}</strong></h3>
+            <h3 class=amt type="text" style="display:inline;padding-left:1em;" >In stock: </h3> <h3 style="display:inline;" ><strong>{{quantity}}</strong></h3>
+            <br/>
+         </div>
+         <div class = ".col-md-4">
+          <h4 style="display:inline-block;">Quantity: </h4>
+          <select [(ngModel)]="selectedValue" (ngModelChange)="setQuantityAmt($event)" class =sel style="display:inline-block;" >
+            <option *ngFor="let option of options">{{option}}</option>
+
+          </select>
+          <button class=addToCart type="submit" style="display:inline; font-size: 1.0em;"  (click)="addToCart()"><strong>Add to Cart</strong></button>
+         </div>
+         <BR CLEAR="left"/>
+    </div> <br/>
+    </div> <br/>
+</div>
 
 </body>
-  <footer>
-      <hr>
-      CST438. 2018 &copy; Manjit Gurcha. Raeleen Watson. Irais Gopar <br />
-  </footer>
+<footer>
+    <hr>
+    CST438. 2018 &copy; Manjit Gurcha. Raeleen Watson. Irais Gopar <br />
+</footer>
 
 
